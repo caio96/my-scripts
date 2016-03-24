@@ -1,5 +1,7 @@
 #!/bin/bash
 #Caio Salvador Rohwedder
+#Monta e roda o simulador LEG
+#Gera os arquivos .out com o resultado de cada teste
 
 #Caso nao esteja no PATH coloque o caminho completo desses arquivos
 lasm="lasm"
@@ -17,8 +19,7 @@ fi
 
 if ! command -v strings >/dev/null 2>&1 
 then
-    echo "Please install strings"
-    echo "sudo apt-get install strings"
+    echo "Please install the terminal command 'strings'"
     exit 1
 fi
 
@@ -55,22 +56,24 @@ then
      exit 1
 fi
 
+#define de cores
 COLOR_NC='\e[0m'
 COLOR_P='\e[1;35m'
 COLOR_Y='\e[1;33m'
 COLOR_R='\e[1;31m'
-diffFile="diff.patch"
+
 testsPath=$(realpath $2)    #caminho absoluto dos testes
+diffFile="diff.patch"
 
-slName=$(basename $1)      #so o nome do arquivo
-slPath=$(realpath $1)      #caminho absoluto do arquivo
-slDir=$(dirname $slPath)  #so o caminho
+slName=$(basename $1)       #so o nome do arquivo
+slPath=$(realpath $1)       #caminho absoluto do arquivo
+slDir=$(dirname $slPath)    #so o caminho
 
-cd $slDir
+cd $slDir                   #entra da pasta do .sl
 
-exeName=${slName%.*}
+exeName=${slName%.*}        #pega nome do .sl sem a extencao
 
-$lasm -o $exeName $slName
+$lasm -o $exeName $slName   #cria executavel
 
 if [ $? != 0 ]
 then
@@ -80,25 +83,41 @@ then
     exit 1
 fi
 
-cp $exeName $testsPath
+cp $exeName $testsPath 2> /dev/null     #copia executavel para pasta de testes, evita erros do legsim
 
-cd $testsPath
-echo -n "" > $diffFile
+cd $testsPath                           #entra na pasta de testes
+echo -n "" > $diffFile                     #cria ou limpa o arquivo de diff na pasta de testes
 
+#executa o simulador para todos os .in
 for i in $(find -maxdepth 1 -name "*.in" | sort)
 do
 	echo -en $COLOR_P
 	echo $(basename $i) | tee -a $diffFile
-	echo "" >> $diffFile
-	echo -en $COLOR_NC
-	$legsim -l $exeName -lc $i > ${i%.*}.pode-dar-ruim
-	strings ${i%.*}.pode-dar-ruim > ${i%.*}.out
-	rm ${i%.*}.pode-dar-ruim
-	diff ${i%.*}.res ${i%.*}.out >> $diffFile
-	echo "" >> $diffFile
+    echo -en $COLOR_NC
+    echo "" >> $diffFile
+
+    #roda simulador leg carregado com o executavel e executa os comandos de um arquivo .in
+    #coloca a saida num arquivo temporario 
+	$legsim -l $exeName -lc $i > ${i%.*}.pode-dar-ruim     
+	
+    #limpa qualquer 'sujeira' da saida do leg e coloca saida no .out
+    strings ${i%.*}.pode-dar-ruim > ${i%.*}.out     
+	rm ${i%.*}.pode-dar-ruim   #remove arquivo temporario
+
+    diff -yt ${i%.*}.res ${i%.*}.out >> $diffFile   #faz o diff (side by side)
+    
+    #da um espaco entre cada teste no arquivo
+    for i in $(seq 1 5)
+    do
+        echo "" >> $diffFile
+    done
 done
 
-rm $exeName
+#remove copia do arquivo executavel se a pasta de testes for diferente da pasta do .sl
+if [ $(realpath $exeName) != $(realpath $slDir/$exeName) ]
+then
+    rm $exeName                    
+fi
 
 echo -en $COLOR_Y
 echo "Good Luck!"

@@ -26,12 +26,14 @@ then
      exit 1
 fi
 
+#define de cores
 COLOR_NC='\e[0m'
-COLOR_LIGHT_BLUE='\e[1;34m'
-URL="https://susy.ic.unicamp.br:9999/mc458ab/%02d/dados/arq%02d"  #pagina de download
-testNum=0
+COLOR_B='\e[1;34m'
 
-cd $testsPath
+URL="https://susy.ic.unicamp.br:9999/mc458ab/%02d/dados/arq%02d"  #pagina de download
+testNum=0       #contador de testes
+
+cd $testsPath   #entra na pasta de testes
  
 #baixa os .in e descobre quantos sao
 while true
@@ -39,9 +41,10 @@ do
 	testNum=$((testNum+1))
 	fURL=$(printf $URL $lab $testNum)
 
-    curl -k $fURL.in -o ${fURL##*/}.in >/dev/null 2>/dev/null
-    grep -q "inexistente" ${fURL##*/}.in >/dev/null
+    curl -k $fURL.in -o ${fURL##*/}.in >/dev/null 2>/dev/null   #baixa teste
+    grep -q "inexistente" ${fURL##*/}.in >/dev/null             #ve se teste existe
 
+    #para quando achar teste 'inexistente'
     if [ $? == 0 ]
 	then
 		rm ${fURL##*/}.in
@@ -60,6 +63,6 @@ do
 	curl -k $fURL.res -o ${fURL##*/}.res >/dev/null 2>/dev/null
 done
 
-echo -en $COLOR_LIGHT_BLUE
+echo -en $COLOR_B
 echo "Done"
 echo -en $COLOR_NC
