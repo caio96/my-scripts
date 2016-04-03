@@ -73,6 +73,8 @@ allright=1                  #flag para ver se todos os resultados foram corretos
 cd $testsPath               #entra na pasta de testes
 echo -n  "" > $diffFile         #cria ou limpa o arquivo de diff na pasta de testes
 
+correctNum=0                #numero de testes corretos
+
 #roda pra todos os arquivos .in
 for i in $(find $(pwd) -maxdepth 1 -name "*.in" | sort)
 do
@@ -94,6 +96,7 @@ do
         echo -en $COLOR_P
         echo "Correct result"
         echo -en $COLOR_NC
+        correctNum=$((correctNum+1))
     fi
 
     echo "" | tee -a $diffFile    
@@ -136,6 +139,10 @@ then
 
         echo "" | tee -a $diffFile    
     done
+else
+    echo -en $COLOR_Y
+    echo "$correctNum rights, let's go!"
+    echo -en $COLOR_NC
 fi
 
 #se todos os resultados continuarem corretos
