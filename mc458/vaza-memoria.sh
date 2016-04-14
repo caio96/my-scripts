@@ -1,7 +1,7 @@
 #!/bin/bash
 #Caio Salvador Rohwedder
-#Compila e roda os testes do programa, mostrando se passou no teste ou nao
-#Gera os arquivos .out e um arquivo diff.patch na pasta dos testes que contem cada diff
+#Compila e roda os testes do programa, e ve se nao vazou memoria durante a execucao de cada teste
+#Gera o arquivo memory.txt na pasta dos testes, ele contem os resultados do valgrind
 
 cppPath=$1
 testsPath=$2
@@ -10,6 +10,13 @@ if ! command -v realpath >/dev/null 2>&1
 then
     echo "Please install realpath"
     echo "sudo apt-get install realpath"
+    exit 1
+fi
+
+if ! command -v valgrind >/dev/null 2>&1 
+then
+    echo "Please install valgrind"
+    echo "sudo apt-get install valgrind"
     exit 1
 fi
 
@@ -41,7 +48,7 @@ COLOR_Y='\e[1;33m'
 COLOR_R='\e[1;31m'
 
 testsPath=$(realpath $2)    #caminho absoluto dos testes
-diffFile="diff.patch"
+outputFile="memory.txt"
 
 cppName=$(basename $1)      #so o nome do arquivo
 cppPath=$(realpath $1)      #caminho absoluto do arquivo
@@ -63,42 +70,43 @@ exePath=$cppDir/$exeName
 allright=1                  #flag para ver se todos os resultados foram corretos, 1 == foram 
 
 cd $testsPath               #entra na pasta de testes
-echo -n  "" > $diffFile     #cria ou limpa o arquivo de diff na pasta de testes
+echo -n  "" > $outputFile   #cria ou limpa o arquivo de memoria na pasta de testes
 
 correctNum=0                #numero de testes corretos
 
 #roda para todos os arquivos .in
 for i in $(find $(pwd) -maxdepth 1 -name "*.in" | sort)
 do
-    echo -n $(basename $i) | tee -a $diffFile
-    echo "" >> $diffFile
-    $exePath < $i > ${i%.*}.out                 #executa o programa
-    diff ${i%.*}.res ${i%.*}.out >> $diffFile   #faz o diff
+    echo -n $(basename $i) | tee -a $outputFile
+    echo "" >> $outputFile
+
+    #executa o programa com valgrind 
+    valgrind -q --leak-check=full --error-exitcode=1 $exePath < $i 2>> $outputFile >/dev/null   
     
-    #pega a saida do diff e escreve na tela
+    #escreve o resultado na tela
     if [ $? != 0 ]
     then
         echo -n " -> "
         echo -en $COLOR_R
-        echo "Files differ"
+        echo "Memory leak"
         echo -en $COLOR_NC 
         allright=0
     else
         echo -n " -> "
         echo -en $COLOR_P
-        echo "Correct result"
+        echo "No memory leak"
         echo -en $COLOR_NC
         correctNum=$((correctNum+1))
     fi
 
-    echo "" | tee -a $diffFile    
+    echo "" | tee -a $outputFile    
 done
 
-#se todos os resultados forem corretos
+#se nao houver vazamento nenhum
 if [ $allright == 1 ]
 then
     echo -en $COLOR_Y
-    echo "Susy approved code!!!"
+    echo "Valgrind approved code!!!"
     echo -en $COLOR_NC
 else #se nao printa o numero de corretos
     echo -en $COLOR_Y
