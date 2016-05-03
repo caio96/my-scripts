@@ -2,6 +2,8 @@
 #Caio Salvador Rohwedder
 #Monta e roda o simulador LEG
 #Gera os arquivos .out com o resultado de cada teste
+#Caso tenha dispositivos, colocar o devices.txt dentro da pasta de testes, 
+#e colocar so um teste.in com 'g rotulo-inicial' nela
 
 #Caso nao esteja no PATH coloque o caminho completo desses arquivos
 lasm="lasm"
@@ -86,7 +88,7 @@ fi
 cp $exeName $testsPath 2> /dev/null     #copia executavel para pasta de testes, evita erros do legsim
 
 cd $testsPath                           #entra na pasta de testes
-echo -n "" > $diffFile                     #cria ou limpa o arquivo de diff na pasta de testes
+echo -n "" > $diffFile                  #cria ou limpa o arquivo de diff na pasta de testes
 
 #executa o simulador para todos os .in
 for i in $(find -maxdepth 1 -name "*.in" | sort)
@@ -96,21 +98,27 @@ do
     echo -en $COLOR_NC
     echo "" >> $diffFile
 
-    #roda simulador leg carregado com o executavel e executa os comandos de um arquivo .in
-    #coloca a saida num arquivo temporario 
-	$legsim -l $exeName -lc $i > ${i%.*}.pode-dar-ruim     
-	
-    #limpa qualquer 'sujeira' da saida do leg e coloca saida no .out
-    strings ${i%.*}.pode-dar-ruim > ${i%.*}.out     
-	rm ${i%.*}.pode-dar-ruim   #remove arquivo temporario
+    if [ -e devices.txt ]
+    then
+        #roda o simulador carregando o executavel, os testes e os dispositivos
+        #se existir um devices.txt na pasta de testes
+        $legsim -l $exeName -d devices.txt -lc $i
+    else
+        #roda simulador leg carregado com o executavel e executa os comandos de um arquivo .in
+        $legsim -l $exeName -lc $i > ${i%.*}.pode-dar-ruim     
+        
+        #limpa qualquer 'sujeira' da saida do leg e coloca saida no .out
+        strings ${i%.*}.pode-dar-ruim > ${i%.*}.out     
+        rm ${i%.*}.pode-dar-ruim   #remove arquivo temporario
 
-    diff -yt ${i%.*}.res ${i%.*}.out >> $diffFile   #faz o diff (side by side)
-    
-    #da um espaco entre cada teste no arquivo
-    for i in $(seq 1 5)
-    do
-        echo "" >> $diffFile
-    done
+        diff -yt ${i%.*}.res ${i%.*}.out >> $diffFile   #faz o diff (side by side)
+        
+        #da um espaco entre cada teste no arquivo
+        for i in $(seq 1 5)
+        do
+            echo "" >> $diffFile
+        done
+    fi
 done
 
 #remove copia do arquivo executavel se a pasta de testes for diferente da pasta do .sl
