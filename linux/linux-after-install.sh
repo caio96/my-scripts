@@ -54,11 +54,21 @@ sudo apt-get install -y bleachbit	#cleaning
 sudo apt-get install -y p7zip-rar p7zip-full unace unrar zip unzip
 sudo apt-get install -y sharutils rar uudeview mpack arj cabextract file-roller
 
+#web
+sudo apt-get install -y php5
+sudo apt-get install -y apache2
+sudo apt-get install -y phpmyadmin
+sudo apt-get install -y mysql-server php5-mysql
+
 # sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.10/ /' > /etc/apt/sources.list.d/arc-theme.list" 
 # wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_15.10/Release.key
 # sudo apt-key add - < Release.key
 # sudo apt-get update 
 # sudo apt-get install -y arc-theme
+
+# sudo apt-add-repository -y ppa:numix/ppa
+# sudo apt-get update
+# sudo apt-get install -y numix-icon-theme-circle numix-gtk-theme
 
 # sudo add-apt-repository -y ppa:gnumdk/lollypop
 # sudo apt-get update
