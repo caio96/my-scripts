@@ -25,6 +25,7 @@ sudo apt-get install -y python2.7
 sudo apt-get install -y ipython
 sudo apt-get install -y arduino arduino-core
 sudo apt-get install -y texlive
+sudo apt-get install -y texlive-full
 sudo apt-get install -y texstudio
 sudo apt-get install -y graphviz
 sudo apt-get install -y vim
@@ -73,6 +74,10 @@ sudo apt-get install -y mysql-server php5-mysql
 # sudo add-apt-repository -y ppa:gnumdk/lollypop
 # sudo apt-get update
 # sudo apt-get install -y lollypop
+
+# sudo add-apt-repository -y ppa:nilarimogard/webupd8
+# sudo apt-get update
+# sudo apt-get install -y pulseaudio-equalizer
 
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 # echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
