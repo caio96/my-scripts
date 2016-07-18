@@ -1,6 +1,6 @@
 #!/bin/sh
-#Move to /usr/local/bin/
-#And move hdmi_sound.rules to /etc/udev/rules.d/
+# Move to /usr/local/bin/
+# And move hdmi_sound.rules to /etc/udev/rules.d/
 
 USER_NAME=`who | grep "(:0)" | cut -f 1 -d ' '| sort -u`
 USER_ID=`id -u $USER_NAME`
