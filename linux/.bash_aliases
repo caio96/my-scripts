@@ -3,6 +3,8 @@
 alias ll='ls -AlF'
 alias la='ls -A'
 alias l='ls -CF'
+alias python='python3'
+alias ipython='ipython3'
 alias ..="cd .."
 alias ...="cd ../../"
 alias ....="cd ../../../"

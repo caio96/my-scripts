@@ -21,7 +21,9 @@ sudo apt-get install -y variety
 sudo apt-get install -y git
 sudo apt-get install -y tig
 sudo apt-get install -y python2.7
+sudo apt-get install -y python3.5
 sudo apt-get install -y ipython
+sudo apt-get install -y ipython3
 sudo apt-get install -y texlive
 sudo apt-get install -y texlive-full
 sudo apt-get install -y texstudio
@@ -63,6 +65,9 @@ sudo apt-get install -y mysql-server php-mysql
 
 # Compression	
 sudo apt-get install -y p7zip-rar p7zip-full 
+
+# Partition manager
+sudo apt-get install -y gparted
 
 # sudo apt-add-repository -y ppa:numix/ppa
 # sudo apt-get update
