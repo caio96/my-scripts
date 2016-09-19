@@ -1,11 +1,11 @@
 #!/bin/bash
 #Caio Salvador Rohwedder
-#Baixa os testes do labX e seus resultados 
+#Baixa os testes do labX e seus resultados
 
 lab=$1
 testsPath=$2
 
-if ! command -v curl >/dev/null 2>&1 
+if ! command -v curl >/dev/null 2>&1
 then
     echo "Please install curl"
     echo "sudo apt-get install curl"
@@ -15,13 +15,13 @@ fi
 #Se um dos argumentos estiver vazio
 if [ -z "$lab" -o -z "$testsPath" ]
 then
-	echo "Usage: ./pega-testes.sh [lab-number] /Path/to/tests/folder/"
+	echo "Usage: $0 [lab-number] /Path/to/tests/folder/"
 	exit 1
-fi 
+fi
 
 if [ ! -d $testsPath ]
 then
-     echo "Usage: ./pega-testes.sh [lab-number] /Path/to/tests/folder/"
+     echo "Usage: $0 [lab-number] /Path/to/tests/folder/"
      echo "Tests dir not found"
      exit 1
 fi
@@ -29,12 +29,11 @@ fi
 #define de cores
 COLOR_NC='\e[0m'
 COLOR_B='\e[1;34m'
-
-URL="https://susy.ic.unicamp.br:9999/mc458ab/%02d/dados/arq%02d"  #pagina de download
+URL="https://susy.ic.unicamp.br:9999/mc558ab/%02d/dados/arq%02d"  #pagina de download
 testNum=0       #contador de testes
 
 cd $testsPath   #entra na pasta de testes
- 
+
 #baixa os .in e descobre quantos sao
 while true
 do

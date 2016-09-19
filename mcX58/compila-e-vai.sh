@@ -6,7 +6,7 @@
 cppPath=$1
 testsPath=$2
 
-if ! command -v realpath >/dev/null 2>&1 
+if ! command -v realpath >/dev/null 2>&1
 then
     echo "Please install realpath"
     echo "sudo apt-get install realpath"
@@ -16,20 +16,20 @@ fi
 #Se um dos argumentos estiver vazio
 if [ -z "$cppPath" -o -z "$testsPath" ]
 then
-    echo "Usage: ./compila-e-vai.sh /Path/to/cpp/file /Path/to/tests/dir/"
+    echo "Usage: $0 /Path/to/cpp/file /Path/to/tests/dir/"
     exit 1
-fi 
+fi
 
-if [ ! -e $cppPath ] 
+if [ ! -e $cppPath ]
 then
-    echo "Usage: ./compila-e-vai.sh /Path/to/cpp/file /Path/to/tests/dir/"
+    echo "Usage: $0 /Path/to/cpp/file /Path/to/tests/dir/"
     echo "C++ file not found"
     exit 1
 fi
 
 if [ ! -d $testsPath ]
 then
-     echo "Usage: ./compila-e-vai.sh /Path/to/cpp/file /Path/to/tests/dir/"
+     echo "Usage: $0 /Path/to/cpp/file /Path/to/tests/dir/"
      echo "Tests dir not found"
      exit 1
 fi
@@ -51,7 +51,7 @@ cd $cppDir                  #entra na pasta do .cpp
 
 exeName=${cppName%.*}       #nome do arquivo sem extensao
 
-g++ -Wall -o $exeName $cppPath      #compila o codigo
+g++ -ansi -pedantic -Wall -lm -o $exeName $cppPath      #compila o codigo
 
 if [ $? != 0 ]
 then
@@ -60,7 +60,7 @@ then
 fi
 
 exePath=$cppDir/$exeName
-allright=1                  #flag para ver se todos os resultados foram corretos, 1 == foram 
+allright=1                  #flag para ver se todos os resultados foram corretos, 1 == foram
 
 cd $testsPath               #entra na pasta de testes
 echo -n  "" > $diffFile     #cria ou limpa o arquivo de diff na pasta de testes
@@ -74,14 +74,14 @@ do
     echo "" >> $diffFile
     $exePath < $i > ${i%.*}.out                 #executa o programa
     diff ${i%.*}.res ${i%.*}.out >> $diffFile   #faz o diff
-    
+
     #pega a saida do diff e escreve na tela
     if [ $? != 0 ]
     then
         echo -n " -> "
         echo -en $COLOR_R
         echo "Files differ"
-        echo -en $COLOR_NC 
+        echo -en $COLOR_NC
         allright=0
     else
         echo -n " -> "
@@ -91,7 +91,7 @@ do
         correctNum=$((correctNum+1))
     fi
 
-    echo "" | tee -a $diffFile    
+    echo "" | tee -a $diffFile
 done
 
 #se todos os resultados forem corretos

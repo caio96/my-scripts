@@ -6,14 +6,14 @@
 cppPath=$1
 testsPath=$2
 
-if ! command -v realpath >/dev/null 2>&1 
+if ! command -v realpath >/dev/null 2>&1
 then
     echo "Please install realpath"
     echo "sudo apt-get install realpath"
     exit 1
 fi
 
-if ! command -v valgrind >/dev/null 2>&1 
+if ! command -v valgrind >/dev/null 2>&1
 then
     echo "Please install valgrind"
     echo "sudo apt-get install valgrind"
@@ -23,20 +23,20 @@ fi
 #Se um dos argumentos estiver vazio
 if [ -z "$cppPath" -o -z "$testsPath" ]
 then
-    echo "Usage: ./compila-e-vai.sh /Path/to/cpp/file /Path/to/tests/dir/"
+    echo "Usage: $0 /Path/to/cpp/file /Path/to/tests/dir/"
     exit 1
-fi 
+fi
 
-if [ ! -e $cppPath ] 
+if [ ! -e $cppPath ]
 then
-    echo "Usage: ./compila-e-vai.sh /Path/to/cpp/file /Path/to/tests/dir/"
+    echo "Usage: $0 /Path/to/cpp/file /Path/to/tests/dir/"
     echo "C++ file not found"
     exit 1
 fi
 
 if [ ! -d $testsPath ]
 then
-     echo "Usage: ./compila-e-vai.sh /Path/to/cpp/file /Path/to/tests/dir/"
+     echo "Usage: $0 /Path/to/cpp/file /Path/to/tests/dir/"
      echo "Tests dir not found"
      exit 1
 fi
@@ -67,7 +67,7 @@ then
 fi
 
 exePath=$cppDir/$exeName
-allright=1                  #flag para ver se todos os resultados foram corretos, 1 == foram 
+allright=1                  #flag para ver se todos os resultados foram corretos, 1 == foram
 
 cd $testsPath               #entra na pasta de testes
 echo -n  "" > $outputFile   #cria ou limpa o arquivo de memoria na pasta de testes
@@ -80,16 +80,16 @@ do
     echo -n $(basename $i) | tee -a $outputFile
     echo "" >> $outputFile
 
-    #executa o programa com valgrind 
-    valgrind -q --leak-check=full --error-exitcode=1 $exePath < $i 2>> $outputFile >/dev/null   
-    
+    #executa o programa com valgrind
+    valgrind -q --track-origins=yes --leak-check=full --error-exitcode=1 $exePath < $i 2>> $outputFile >/dev/null
+
     #escreve o resultado na tela
     if [ $? != 0 ]
     then
         echo -n " -> "
         echo -en $COLOR_R
         echo "Memory leak"
-        echo -en $COLOR_NC 
+        echo -en $COLOR_NC
         allright=0
     else
         echo -n " -> "
@@ -99,7 +99,7 @@ do
         correctNum=$((correctNum+1))
     fi
 
-    echo "" | tee -a $outputFile    
+    echo "" | tee -a $outputFile
 done
 
 #se nao houver vazamento nenhum

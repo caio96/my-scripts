@@ -4,7 +4,7 @@
 sudo apt-get update && sudo apt-get -y upgrade
 
 # Package managers
-sudo apt-get install -y synaptic 
+sudo apt-get install -y synaptic
 sudo apt-get install -y gdebi
 
 # Ubuntu
@@ -12,7 +12,7 @@ sudo apt-get install -y unity-tweak-tool
 sudo apt-get install -y ubuntu-restricted-extras
 
 # Topbar
-sudo apt-get install -y redshift redshift-gtk #config file 
+sudo apt-get install -y redshift redshift-gtk #config file
 sudo apt-get install -y caffeine
 sudo apt-get install -y indicator-keylock
 sudo apt-get install -y variety
@@ -36,13 +36,14 @@ sudo apt-get install -y openjdk-8-jdk
 sudo apt-get install -y realpath
 sudo apt-get install -y curl
 sudo apt-get install -y htop
+sudo apt-get install -y tmux
 sudo apt-get install -y colordiff
 
 # Video
 sudo apt-get install -y vlc
 
 # Image
-sudo apt-get install -y gimp 
+sudo apt-get install -y gimp
 sudo apt-get install -y inkscape
 
 # Torrent
@@ -63,8 +64,8 @@ sudo apt-get install -y apache2
 sudo apt-get install -y phpmyadmin
 sudo apt-get install -y mysql-server php-mysql
 
-# Compression	
-sudo apt-get install -y p7zip-rar p7zip-full 
+# Compression
+sudo apt-get install -y p7zip-rar p7zip-full
 
 # Partition manager
 sudo apt-get install -y gparted
@@ -80,6 +81,10 @@ sudo apt-get install -y gparted
 # sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 # sudo apt-get update
 # sudo apt-get -y install sublime-text-installer
+
+# sudo add-apt-repository -y ppa:webupd8team/atom
+# sudo apt-get update
+# sudo apt-get install -y atom
 
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 # echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
