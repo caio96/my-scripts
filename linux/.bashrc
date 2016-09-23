@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+#terminal font color #FF9D0A
+#terminal font DroidSansMono
+
 #To show git branch in PS1
 #mkdir ~/.bash
 #cd ~/.bash
