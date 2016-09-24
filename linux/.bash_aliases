@@ -5,6 +5,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias python='python3'
 alias ipython='ipython3'
+alias diff='colordiff'
 alias ..="cd .."
 alias ...="cd ../../"
 alias ....="cd ../../../"

@@ -72,12 +72,12 @@ highlight Pmenu ctermfg=white ctermbg=darkgray
 highlight PmenuSel ctermfg=black  ctermbg=white
 highlight clear SignColumn
 
-let g:ycm_global_ycm_extra_conf = '~/.ycm/ycm_extra_conf.py'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Remove preview window
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
+"let g:ycm_add_preview_to_completeopt = 0
+"set completeopt-=preview
 
 "-------------------------------------------------------------
 " Vim airline
@@ -89,7 +89,7 @@ let g:airline_powerline_fonts = 1
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 
-" Show just the filename 
+" Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Theme
