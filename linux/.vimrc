@@ -31,6 +31,11 @@ imap <down> <esc>gj<insert><right>
 map <up> gk
 map <down> gj
 
+" Copy, cut and past shortcuts
+vmap <C-c> "+y
+vmap <C-x> "+d
+map <C-v> "+p
+
 "-------------------------------------------------------------
 " Vundle
 "-------------------------------------------------------------
@@ -76,8 +81,11 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Remove preview window
-"let g:ycm_add_preview_to_completeopt = 0
-"set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+set completeopt-=preview
+
+" Remove diagnostics
+let g:ycm_show_diagnostics_ui = 0
 
 "-------------------------------------------------------------
 " Vim airline
@@ -95,14 +103,3 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Theme
 let g:airline_theme='wombat'
 
-"-------------------------------------------------------------
-" Syntastic
-"-------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
