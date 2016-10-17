@@ -88,6 +88,16 @@ fi
 
 unset color_prompt force_color_prompt
 
+
+#Powerline prompt
+function _update_ps1() {
+    PS1="$(~/git/powerline-shell/powerline-shell.py --cwd-max-depth 4 --cwd-max-dir-size 10  $? 2> /dev/null)"
+}
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
