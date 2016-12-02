@@ -38,11 +38,13 @@ then
 	exit 1
 fi
 
-rsync -ahv --stats --dry-run --progress -i "$sourcePath" "$targetPath" > nana.txt
+rsyncCommand='rsync -ahv --exclude='.git/' --stats --progress -i '
+
+$rsyncCommand --dry-run "$sourcePath" "$targetPath" > nana.txt
 python output-rsync.py nana.txt
 rm nana.txt
 
 echo ""
 echo "This was a dry-run"
 echo "You can run it with:"
-echo "rsync -ahv --stats --progress -i $sourcePath $targetPath"
+echo "$rsyncCommand $sourcePath $targetPath"
