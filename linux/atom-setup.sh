@@ -5,6 +5,8 @@ apm install highlight-selected
 apm install linter
 apm install minimap
 apm install pigments
+apm install language-tex
+apm install tabs-to-spaces
 
 apm install you-complete-me
 # /usr/bin/python

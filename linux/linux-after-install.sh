@@ -16,6 +16,9 @@ sudo apt-get install -y redshift redshift-gtk #config file
 sudo apt-get install -y caffeine
 sudo apt-get install -y indicator-keylock
 sudo apt-get install -y variety
+# sudo add-apt-repository -y ppa:atareao/atareao
+# sudo apt-get update
+# sudo apt-get -y install my-weather-indicator
 
 # Code
 sudo apt-get install -y git
@@ -49,9 +52,9 @@ sudo apt-get install -y inkscape
 # Torrent
 sudo apt-get install -y qbittorrent
 
-sudo apt-get install -y gufw 		#firewall
-sudo apt-get install -y clamtk 		#antivirus
-sudo apt-get install -y bleachbit	#cleaning
+sudo apt-get install -y gufw        #firewall
+sudo apt-get install -y clamtk      #antivirus
+sudo apt-get install -y bleachbit   #cleaning
 
 # Power
 sudo apt-get install -y tlp tlp-rdw
@@ -74,10 +77,6 @@ sudo apt-get install -y gparted
 # sudo apt-get update
 # sudo apt-get install -y numix-icon-theme-circle numix-gtk-theme
 
-# sudo add-apt-repository -y ppa:nilarimogard/webupd8
-# sudo apt-get update
-# sudo apt-get install -y pulseaudio-equalizer
-
 # sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 # sudo apt-get update
 # sudo apt-get -y install sublime-text-installer
@@ -91,9 +90,9 @@ sudo apt-get install -y gparted
 # sudo apt-get update
 # sudo apt-get install -y spotify-client
 
-# sudo add-apt-repository -y ppa:atareao/atareao
+# sudo add-apt-repository -y ppa:nilarimogard/webupd8
 # sudo apt-get update
-# sudo apt-get -y install my-weather-indicator
+# sudo apt-get install -y pulseaudio-equalizer
 
 sudo apt-get -y autoremove
 sudo apt-get -y autoclean
