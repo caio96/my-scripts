@@ -4,14 +4,14 @@
 sourcePath="$1"
 targetPath="$2"
 
-if [ ! -d $sourcePath ] || [ -z $sourcePath ]
+if [ ! -d "$sourcePath" ] || [ -z "$sourcePath" ]
 then
 	echo "Source path error"
 	echo "Usage: $0 sourcePath/ targetPath/"
 	exit 1
 fi
 
-if [ ! -d $targetPath ] || [ -z $targetPath ]
+if [ ! -d "$targetPath" ] || [ -z "$targetPath" ]
 then
 	echo "Target path error"
 	echo "Usage: $0 sourcePath/ targetPath/"
