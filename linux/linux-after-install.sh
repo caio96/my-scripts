@@ -31,7 +31,7 @@ sudo apt-get install -y texlive
 sudo apt-get install -y texlive-full
 sudo apt-get install -y texstudio
 sudo apt-get install -y graphviz
-sudo apt-get install -y vim
+sudo apt-get install -y vim vim-gtk
 sudo apt-get install -y valgrind
 sudo apt-get install -y openjdk-8-jdk
 

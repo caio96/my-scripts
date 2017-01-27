@@ -31,10 +31,8 @@ imap <down> <esc>gj<insert><right>
 map <up> gk
 map <down> gj
 
-" Copy, cut and past shortcuts
-vmap <C-c> "+y
-vmap <C-x> "+d
-map <C-v> "+p
+" Copy, cut and past to clipboard
+set clipboard=unnamedplus
 
 "-------------------------------------------------------------
 " Vundle
@@ -50,7 +48,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -73,19 +71,19 @@ filetype plugin indent on    " required
 " YouCompleteMe
 "-------------------------------------------------------------
 
-highlight Pmenu ctermfg=white ctermbg=darkgray
-highlight PmenuSel ctermfg=black  ctermbg=white
-highlight clear SignColumn
+" highlight Pmenu ctermfg=white ctermbg=darkgray
+" highlight PmenuSel ctermfg=black  ctermbg=white
+" highlight clear SignColumn
 
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Remove preview window
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
+" let g:ycm_add_preview_to_completeopt = 0
+" set completeopt-=preview
 
 " Remove diagnostics
-let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_show_diagnostics_ui = 0
 
 "-------------------------------------------------------------
 " Vim airline
@@ -102,4 +100,3 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Theme
 let g:airline_theme='wombat'
-
