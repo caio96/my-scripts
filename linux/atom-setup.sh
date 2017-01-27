@@ -6,7 +6,6 @@ apm install linter
 apm install minimap
 apm install pigments
 apm install language-tex
-apm install language-shellscript
 apm install monokai
 apm install tabs-to-spaces
 
