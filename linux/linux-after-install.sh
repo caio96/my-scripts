@@ -73,6 +73,9 @@ sudo apt-get install -y p7zip-rar p7zip-full
 # Partition manager
 sudo apt-get install -y gparted
 
+# Logitech
+sudo apt-get install -y solaar
+
 # sudo apt-add-repository -y ppa:numix/ppa
 # sudo apt-get update
 # sudo apt-get install -y numix-icon-theme-circle numix-gtk-theme
