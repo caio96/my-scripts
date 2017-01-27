@@ -2,20 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-#terminal font color #FF9D0A
-#terminal font DroidSansMono
-
-#To show git branch in PS1
-#mkdir ~/.bash
-#cd ~/.bash
-#git clone git://github.com/jimeh/git-aware-prompt.git
-git_prompt='no'
-if [ -d ~/.bash/git-aware-prompt ]; then
-    export GITAWAREPROMPT=~/.bash/git-aware-prompt
-    source "${GITAWAREPROMPT}/main.sh"
-    git_prompt='yes'
-fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -61,37 +47,49 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
-if [ "$git_prompt" = 'yes' ]; then
-    if [ "$color_prompt" = yes ]; then
-        PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-    else
-        PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-    fi
+# Show git branch in PS1
+# mkdir ~/.bash
+# cd ~/.bash
+# git clone git://github.com/jimeh/git-aware-prompt.git
+# git_prompt='no'
+# if [ -d ~/.bash/git-aware-prompt ]; then
+#     export GITAWAREPROMPT=~/.bash/git-aware-prompt
+#     source "${GITAWAREPROMPT}/main.sh"
+#     git_prompt='yes'
+# fi
+#
+# if [ "$color_prompt" = yes ]; then
+#     PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+# else
+#     PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+# fi
+
+if [ "$color_prompt" = yes ]; then
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '  # with host
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    if [ "$color_prompt" = yes ]; then
-        #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-        PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[$txtcyn\]\[$txtred\]\[$txtrst\]\$ "
-    else
-        #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-        PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\[$txtcyn\]\[$txtred\]\[$txtrst\]\$ "
-    fi
+    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '  # with host
+    PS1='${debian_chroot:+($debian_chroot)}\u:\w\$ '
 fi
 
 unset color_prompt force_color_prompt
 
-
-#Powerline prompt
+# Powerline prompt
+# git clone https://github.com/milkbikis/powerline-shell
+# cp config.py.dist config.py
+# ./install.py
+powerShell="/home/caio/git/powerline-shell/powerline-shell.py"
 function _update_ps1() {
-    PS1="$(~/git/powerline-shell/powerline-shell.py --cwd-max-depth 4 --cwd-max-dir-size 10  $? 2> /dev/null)"
+    [ -f $powerShell ] && PS1="$( $powerShell --cwd-max-depth 4 --cwd-max-dir-size 10  $? 2> /dev/null)"
 }
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
