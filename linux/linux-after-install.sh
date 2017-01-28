@@ -23,10 +23,6 @@ sudo apt-get install -y variety
 # Code
 sudo apt-get install -y git
 sudo apt-get install -y tig
-sudo apt-get install -y python2.7
-sudo apt-get install -y python3.5
-sudo apt-get install -y ipython
-sudo apt-get install -y ipython3
 sudo apt-get install -y texlive
 sudo apt-get install -y texlive-full
 sudo apt-get install -y texstudio
@@ -34,6 +30,15 @@ sudo apt-get install -y graphviz
 sudo apt-get install -y vim vim-gtk
 sudo apt-get install -y valgrind
 sudo apt-get install -y openjdk-8-jdk
+
+# Python
+sudo apt-get install -y python2.7
+sudo apt-get install -y python3.5
+sudo apt-get install -y ipython
+sudo apt-get install -y ipython3
+sudo apt-get install -y python-pip
+pip install --upgrade pip
+pip install powerline-status
 
 # Terminal
 sudo apt-get install -y realpath
