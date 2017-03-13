@@ -46,6 +46,7 @@ sudo apt-get install -y curl
 sudo apt-get install -y htop
 sudo apt-get install -y tmux
 sudo apt-get install -y colordiff
+sudo apt-get install -y ssh
 
 # Video
 sudo apt-get install -y vlc
@@ -80,6 +81,11 @@ sudo apt-get install -y gparted
 
 # Logitech
 sudo apt-get install -y solaar
+
+# Finds duplicates
+# sudo apt-add-repository -y ppa:hsoft/ppa
+# sudo apt-get update
+# sudo apt-get install -y dupeguru-se dupeguru-pe
 
 # sudo apt-add-repository -y ppa:numix/ppa
 # sudo apt-get update

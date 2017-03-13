@@ -87,9 +87,8 @@ unset color_prompt force_color_prompt
 # git clone https://github.com/milkbikis/powerline-shell
 # cp config.py.dist config.py
 # ./install.py
-powerShell="/home/caio/git/powerline-shell/powerline-shell.py"
 function _update_ps1() {
-    [ -f $powerShell ] && PS1="$( $powerShell --cwd-max-depth 4 --cwd-max-dir-size 10  $? 2> /dev/null)"
+    PS1=$( /home/caio/git/powerline-shell/powerline-shell.py --cwd-max-depth 4 --cwd-max-dir-size 10  $? 2> /dev/null)
 }
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
