@@ -87,6 +87,11 @@ sudo apt-get install -y solaar
 # sudo apt-get update
 # sudo apt-get install -y dupeguru-se dupeguru-pe
 
+# IntelliJ
+# sudo add-apt-repository -y ppa:mmk2410/intellij-idea
+# sudo apt-get update
+# sudo apt-get install -y intellij-idea-community
+
 # sudo apt-add-repository -y ppa:numix/ppa
 # sudo apt-get update
 # sudo apt-get install -y numix-icon-theme-circle numix-gtk-theme
