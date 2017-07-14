@@ -18,6 +18,9 @@ then
 	exit 1
 fi
 
+sourcePath="$(realpath $sourcePath)/"
+targetPath="$(realpath $targetPath)/"
+
 SOURCE="${BASH_SOURCE[0]}"
 # While $SOURCE is a symlink, resolve it
 while [ -h "$SOURCE" ]; do
