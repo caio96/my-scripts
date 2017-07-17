@@ -44,6 +44,7 @@ sudo apt-get install -y htop
 sudo apt-get install -y tmux
 sudo apt-get install -y colordiff
 sudo apt-get install -y ssh
+sudo apt-get install -y dtrx 
 
 # Video
 sudo apt-get install -y vlc
