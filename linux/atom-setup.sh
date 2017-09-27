@@ -5,13 +5,9 @@ apm install highlight-selected
 apm install linter
 apm install pigments
 apm install autocomplete-paths
-apm install language-tex
 apm install monokai
 
 apm install minimap
-apm install minimap-cursorline
-apm install minimap-find-and-replace
-apm install minimap-highlight-selected
 
 # apm install you-complete-me
 # /usr/bin/python

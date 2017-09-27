@@ -1,8 +1,8 @@
 #!/bin/bash
-# Renames photos with their date infomation
+# Renames photos with their date information
 
 name=$1
-pasta=$2
+folder=$2
 
 if [ -z "$name" ]
 then
@@ -11,14 +11,14 @@ then
     exit 1
 fi
 
-if [ -z "$pasta" ] || [ ! -d "$pasta" ]
+if [ -z "$folder" ] || [ ! -d "$folder" ]
 then
     echo "Source target path error"
     echo "Usage: $0 name /target/Path/"
     exit 1
 fi
 
-cd $pasta
+cd $folder
 
 for i in *.jpg
 do

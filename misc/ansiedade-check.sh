@@ -1,8 +1,8 @@
 #!/bin/bash
-#Checa se um site foi atualizado a cada 10 segundos, como por exemplo se um professor liberou uma nota
-#Fica rodando e quando o site é atualizado faz um beep
+# Checa se um site foi atualizado a cada 10 seconds, 
+# como por exemplo se um professor liberou uma nota
+# Fica rodando e quando o site é atualizado faz um beep
 
-#Define as cores
 COLOR_NC='\e[0m'
 COLOR_B='\e[1;34m'
 
@@ -15,19 +15,18 @@ fi
 
 adress=$1
 
-#Se um o argumento estiver vazio
 if [ -z "$adress" ]
 then
-	echo "Usage: ./ansiedade-check.sh https://www.web.adress/"
+	echo "Usage: ./anxiety-check.sh https://www.web.adress/"
 	exit 1
 fi
 
-wget -q $adress -O primeiro.html
+wget -q $adress -O first.html
 
 while [ true ]
 do
-	wget -q $adress -O segundo.html
-	diff -q primeiro.html segundo.html
+	wget -q $adress -O second.html
+	diff -q first.html second.html
 	if [ $? -ne 0 ]
 	then
 		break
@@ -36,8 +35,8 @@ do
 	sleep 10s
 done
 
-rm primeiro.html
-rm segundo.html
+rm first.html
+rm second.html
 
 echo ""
 echo -en $COLOR_B
