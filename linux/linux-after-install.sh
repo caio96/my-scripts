@@ -83,6 +83,11 @@ sudo snap install --classic atom
 # VS Code - .deb
 # Sublime3 - .deb
 
+# GCC 7
+# sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+# sudo apt update
+# sudo apt -y install gcc-7 g++-7
+
 # Weather indicator
 # sudo add-apt-repository -y ppa:atareao/atareao
 # sudo apt update
