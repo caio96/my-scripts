@@ -54,7 +54,6 @@ sudo apt install -y vlc
 
 # Image editing
 sudo apt install -y gimp
-sudo apt install -y inkscape
 
 # Torrent client
 sudo apt install -y qbittorrent
