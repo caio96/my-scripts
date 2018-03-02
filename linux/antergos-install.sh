@@ -32,11 +32,11 @@
 	# install oh-my-zsh 
 
 # Install programs
-	trizen -S --needed atom colordiff docker gimp google-chrome gparted gvim 
+	trizen -S --needed atom colordiff docker gdb gimp gparted gvim 
 	trizen -S --needed intellij-idea-community-edition jdk9-openjdk
 	trizen -S --needed libreoffice-fresh neovim parallel python-pip
 	trizen -S --needed qbittorrent rsync texlive-lang texlive-most
-	trizen -S --needed texstudio tig tmux vlc 
+	trizen -S --needed texstudio tig tmux vlc xclip
 
 # Gnome extensions support
 	trizen -S --needed chrome-gnome-shell-git
