@@ -29,10 +29,10 @@
 # Use zsh as default shell
 	trizen -S --needed zsh zsh-completions
 	chsh -s $(which zsh)
-	# install oh-my-zsh 
+	# install oh-my-zsh
 
 # Install programs
-	trizen -S --needed atom colordiff docker gdb gimp gparted gvim 
+	trizen -S --needed atom colordiff docker gdb gimp gparted gvim
 	trizen -S --needed intellij-idea-community-edition jdk9-openjdk
 	trizen -S --needed libreoffice-fresh neovim parallel python-pip
 	trizen -S --needed qbittorrent rsync texlive-lang texlive-most
@@ -66,13 +66,23 @@
 # YouCompleteMe - cpp completer
 	trizen -S --needed clang
 	# install with vim -> ./install.py --clang-completer --system-libclang
-	
+
 # Tlp - power manager
 	trizen -S --needed tlp tp_smapi
-	systemctl enable tlp tlp-sleep	
+	systemctl enable tlp tlp-sleep
 	systemctl mask systemd-rfkill.service systemd-rfkill.socket
 
 # Powerline
 	sudo pip install powerline-status
 	trizen -S --needed nerd-fonts-complete # DroidSans
 
+# Dhclient
+    trizen -S dhclient
+    # add to: /etc/NetworkManager/conf.d/dhcp-client.conf
+    # [main]
+    # dhcp=dhclient
+
+# Install anaconda in ~/.anaconda3
+    # conda update anaconda
+    # conda update conda
+    # conda update --all
