@@ -35,8 +35,9 @@
 	trizen -S --needed atom colordiff docker gdb gimp gparted gvim
 	trizen -S --needed intellij-idea-community-edition jdk9-openjdk
 	trizen -S --needed libreoffice-fresh neovim parallel python-pip
-	trizen -S --needed qbittorrent rsync texlive-lang texlive-most
-	trizen -S --needed texstudio tig tmux vlc xclip
+	trizen -S --needed qbittorrent ranger rsync simplescreenrecorder
+    trizen -S --needed texlive-lang texlive-most texstudio tig
+	trizen -S --needed tmux vlc xclip
 
 # Gnome extensions support
 	trizen -S --needed chrome-gnome-shell-git
@@ -74,7 +75,7 @@
 
 # Powerline
 	sudo pip install powerline-status
-	trizen -S --needed nerd-fonts-complete # DroidSans
+	trizen -S --needed nerd-fonts-complete # DroidSans # FuraCode
 
 # Dhclient
     trizen -S dhclient
