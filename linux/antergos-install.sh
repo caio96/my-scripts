@@ -38,6 +38,7 @@
     trizen -S --needed dhclient
     trizen -S --needed docker
     trizen -S --needed docker-compose
+    trizen -S --needed etcher
     trizen -S --needed gdb
     trizen -S --needed gimp
     trizen -S --needed gparted
@@ -50,6 +51,7 @@
     trizen -S --needed linux-lts
     trizen -S --needed linux-lts-headers
     trizen -S --needed neovim
+    trizen -S --needed pacman-contrib
     trizen -S --needed parallel
     trizen -S --needed pikaur
     trizen -S --needed python-pip
@@ -57,6 +59,7 @@
     trizen -S --needed powerline-fonts
     trizen -S --needed qbittorrent
     trizen -S --needed ranger
+    trizen -S --needed redshift
     trizen -S --needed rsync
     trizen -S --needed simplescreenrecorder
     trizen -S --needed solaar
@@ -69,6 +72,7 @@
     trizen -S --needed tmux
     trizen -S --needed vim
     trizen -S --needed vlc
+    trizen -S --needed words
     trizen -S --needed xclip
 
 # AUR
@@ -107,6 +111,10 @@
 
 # YouCompleteMe
     # install with vim -> ./install.py --clang-completer --system-libclang
+
+# Redshift
+    systemctl --user enable redshift.service
+    systemctl --user start redshift.service
 
 # Tlp
     systemctl enable tlp tlp-sleep
