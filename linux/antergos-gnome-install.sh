@@ -53,7 +53,6 @@
     trizen -S --needed neovim
     trizen -S --needed pacman-contrib
     trizen -S --needed parallel
-    trizen -S --needed pikaur
     trizen -S --needed python-pip
     trizen -S --needed powerline
     trizen -S --needed powerline-fonts
@@ -86,6 +85,7 @@
     trizen -S --needed grub2-theme-vimix-git
     trizen -S --needed jdk
     trizen -S --needed nerd-fonts-complete
+    trizen -S --needed pikaur
     trizen -S --needed pulseaudio-equalizer-ladspa
     trizen -S --needed spotify
     trizen -S --needed sublime-text-dev

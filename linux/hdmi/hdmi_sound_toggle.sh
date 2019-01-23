@@ -1,7 +1,12 @@
 #!/bin/bash
-#/usr/local/bin/hdmi_sound_toggle.sh
-#/etc/udev/rules.d/99-hdmi_sound.rules
-#/etc/systemd/system/hdmi_sound_toggle.service
+# Toggle sound when HDMI is connected
+
+# Sound toggle to HDMI automatically
+# Copy files to this locations:
+#
+# /usr/local/bin/hdmi_sound_toggle.sh
+# /etc/udev/rules.d/99-hdmi_sound.rules
+# /etc/systemd/system/hdmi_sound_toggle.service
 
 USER_NAME=$(who | cut -f 1 -d ' ')
 USER_ID=$(id -u "$USER_NAME")
