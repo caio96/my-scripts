@@ -93,6 +93,12 @@ sudo systemctl start hdmi-sound-toggle
 # dns
 # add opendns to /etc/resolve.conf
 
+# dhclient
+# fixes problems with eduroam
+# add to /etc/NetworkManager/conf.d/dhcp-client.conf:
+# [main]
+# dhcp=dhclient
+
 # anaconda
 conda update anaconda
 conda update conda
@@ -154,3 +160,6 @@ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 # change grub's themes
 # set default boot option
 sudo update-grub
+
+# gdb-dashboard
+# install it: https://github.com/cyrus-and/gdb-dashboard

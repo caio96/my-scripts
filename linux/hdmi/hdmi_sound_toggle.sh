@@ -8,12 +8,13 @@
 # /etc/udev/rules.d/99-hdmi_sound.rules
 # /etc/systemd/system/hdmi_sound_toggle.service
 
-USER_NAME=$(who | cut -f 1 -d ' ')
-USER_ID=$(id -u "$USER_NAME")
+USER_NAME=$(who | head -n1 | awk '{print $1;}')
 HDMI_STATUS=$(cat /sys/class/drm/card0/card0-HDMI-A-1/status)
 
 [[ -z $USER_NAME ]] && exit
 [[ -z $HDMI_STATUS ]] && exit
+
+USER_ID=$(id -u "$USER_NAME")
 
 export PULSE_SERVER="unix:/run/user/"$USER_ID"/pulse/native"
 
