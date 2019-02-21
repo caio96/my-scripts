@@ -4,7 +4,7 @@
 
 sleep 0.25
 
-if [ $(xset q | grep "LED mask" | grep -Eco "[0]{8}") = 1 ];
+if [ $(xset -q | grep -c "Caps Lock:[[:space:]]*on") -eq '0' ];
 then
         notify-send -t 1000 -i keyboard "Caps Lock" "Off";
 else
