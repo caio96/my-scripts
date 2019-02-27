@@ -1,17 +1,12 @@
 # update
 sudo sudo pacman -Syu
 
-# install trizen
-git clone https://aur.archlinux.org/trizen.git
-cd trizen
-makepkg -si
-# change clone dir in ~/.config/trizen/trizen.conf
-
 # arch packages
 sudo pacman -S --needed acpi_call #thinkpad
 sudo pacman -S --needed avidemux-qt
 sudo pacman -S --needed clang
 sudo pacman -S --needed colordiff
+sudo pacman -S --needed cppcheck
 sudo pacman -S --needed dhclient
 sudo pacman -S --needed docker
 sudo pacman -S --needed docker-compose
@@ -23,11 +18,13 @@ sudo pacman -S --needed gparted
 sudo pacman -S --needed grub-customizer
 sudo pacman -S --needed gvim
 sudo pacman -S --needed htop
+sudo pacman -S --needed inkscape
 sudo pacman -S --needed intellij-idea-community-edition
 sudo pacman -S --needed jdk-openjdk
 sudo pacman -S --needed libreoffice-still
 # sudo pacman -S --needed linux-lts
 # sudo pacman -S --needed linux-lts-headers
+sudo pacman -S --needed llvm
 sudo pacman -S --needed neovim
 sudo pacman -S --needed pacman-contrib
 sudo pacman -S --needed parallel
@@ -46,11 +43,15 @@ sudo pacman -S --needed tig
 sudo pacman -S --needed tilix
 sudo pacman -S --needed tlp
 sudo pacman -S --needed tmux
+sudo pacman -S --needed trizen
 sudo pacman -S --needed vlc
 sudo pacman -S --needed words
 sudo pacman -S --needed xclip
 sudo pacman -S --needed zsh
 sudo pacman -S --needed zsh-completions
+
+# trizen
+# change clone dir in ~/.config/trizen/trizen.conf
 
 # aur packages
 #trizen -S --needed android-sdk
@@ -59,6 +60,7 @@ sudo pacman -S --needed zsh-completions
 #trizen -S --needed aosp-devel
 trizen -S --needed google-chrome
 #trizen -S --needed jdk
+trizen -S --needed mendeleydesktop-bundled
 trizen -S --needed nerd-fonts-complete
 trizen -S --needed spotify
 trizen -S --needed sublime-text-dev
