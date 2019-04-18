@@ -19,6 +19,7 @@ sudo apt install -y openjdk-11-jdk
 sudo apt install -y pulseaudio-equalizer
 sudo apt install -y qbittorrent
 sudo apt install -y redshift-gtk
+sudo apt install -y simple-scan
 sudo apt install -y smartmontools
 sudo apt install -y solaar
 sudo apt install -y steam

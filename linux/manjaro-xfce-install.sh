@@ -10,7 +10,6 @@ sudo pacman -S --needed cppcheck
 sudo pacman -S --needed dhclient
 sudo pacman -S --needed docker
 sudo pacman -S --needed docker-compose
-sudo pacman -S --needed docky
 sudo pacman -S --needed etcher
 sudo pacman -S --needed gdb
 sudo pacman -S --needed gimp
@@ -28,6 +27,7 @@ sudo pacman -S --needed llvm
 sudo pacman -S --needed neovim
 sudo pacman -S --needed pacman-contrib
 sudo pacman -S --needed parallel
+sudo pacman -S --needed plank
 sudo pacman -S --needed powerline
 sudo pacman -S --needed pulseaudio-equalizer-ladspa
 sudo pacman -S --needed qbittorrent
@@ -35,6 +35,7 @@ sudo pacman -S --needed ranger
 sudo pacman -S --needed redshift
 sudo pacman -S --needed rsync
 sudo pacman -S --needed simplescreenrecorder
+sudo pacman -S --needed simple-scan
 sudo pacman -S --needed solaar
 sudo pacman -S --needed texlive-lang
 sudo pacman -S --needed texlive-most
@@ -44,6 +45,7 @@ sudo pacman -S --needed tilix
 sudo pacman -S --needed tlp
 sudo pacman -S --needed tmux
 sudo pacman -S --needed trizen
+sudo pacman -S --needed uncrustify
 sudo pacman -S --needed vlc
 sudo pacman -S --needed words
 sudo pacman -S --needed xclip
