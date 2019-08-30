@@ -66,6 +66,7 @@ trizen -S --needed mendeleydesktop-bundled
 trizen -S --needed nerd-fonts-complete
 trizen -S --needed spotify
 trizen -S --needed sublime-text-dev
+trizen -S --needed ulauncher
 trizen -S --needed visual-studio-code-bin
 
 # install anaconda
