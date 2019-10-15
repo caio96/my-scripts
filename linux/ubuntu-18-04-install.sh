@@ -3,6 +3,7 @@
 
 sudo apt update && sudo apt -y upgrade
 
+sudo apt install -y baobab
 sudo apt install -y build-essential
 sudo apt install -y chrome-gnome-shell
 sudo apt install -y clang
