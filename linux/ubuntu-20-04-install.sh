@@ -76,6 +76,9 @@ sudo apt-get install papirus-icon-theme
 # -- Install Etcher
 # https://github.com/balena-io/etcher
 
+# -- Install K2pdfopt
+# https://www.willus.com/k2pdfopt/
+
 # -- Install Mendeley
 # https://www.mendeley.com/download-desktop-new/linux
 
@@ -93,6 +96,9 @@ sudo apt-get install papirus-icon-theme
 # Update conda
 # conda update conda
 # conda update --all
+
+# -- Install Youtube-DL
+# https://youtube-dl.org/
 
 # -- Install Pip after conda
 # pip install black
