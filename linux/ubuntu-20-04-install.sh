@@ -6,6 +6,7 @@ sudo apt update && sudo apt -y upgrade
 sudo apt install -y baobab
 sudo apt install -y build-essential
 sudo apt install -y calibre
+sudo apt install -y chesse
 sudo apt install -y clang clang-11
 sudo apt install -y clang-tools clang-tools-11
 sudo apt install -y clangd clangd-11
@@ -18,6 +19,7 @@ sudo apt install -y curl
 sudo apt install -y dconf-editor
 sudo apt install -y docker docker-compose
 sudo apt install -y ffmpeg
+sudo apt install -y flameshot
 sudo apt install -y gaupol
 sudo apt install -y gdb
 sudo apt install -y gdebi
@@ -29,12 +31,13 @@ sudo apt install -y htop
 sudo apt install -y kitty
 sudo apt install -y libreoffice
 sudo apt install -y llvm llvm-11
+sudo apt install -y locate
 sudo apt install -y meld
 sudo apt install -y neofetch
 sudo apt install -y ninja-build
-sudo apt install -y nodejs
 sudo apt install -y okular
 sudo apt install -y openconnect
+sudo apt install -y pdftk
 sudo apt install -y psensor
 sudo apt install -y pulseaudio-equalizer
 sudo apt install -y python3 python3-pip python3-dev python3-neovim
@@ -61,6 +64,8 @@ sudo apt install -y zsh
 
 # -- Snaps
 sudo snap install alacritty --classic
+sudo snap install intellij-idea-community --classic
+sudo snap install node --classic --channel=14
 sudo snap install slack --classic
 sudo snap install spotify
 
@@ -87,6 +92,8 @@ papirus-folders -C yaru --theme Papirus
 
 # -- Install Chrome
 # https://www.google.com/chrome/
+# Disable handling of multimedia keys
+# go to chrome://flags/ and disable Hardware Media Key Handling
 
 # -- Install Etcher
 # https://github.com/balena-io/etcher
@@ -100,9 +107,6 @@ sudo apt install balena-etcher-electron
 # -- Install Mendeley
 # https://www.mendeley.com/download-desktop-new/linux
 
-# -- Install VS Code
-# https://code.visualstudio.com/docs/setup/linux
-
 # -- Install Nerdfonts (Fira Code)
 # Get fonts: https://www.nerdfonts.com/font-downloads
 # Place fonts in ~/.fonts/
@@ -115,8 +119,17 @@ sudo apt install balena-etcher-electron
 # conda update conda
 # conda update --all
 
+# -- Install Rescue Time
+# https://www.rescuetime.com/download_linux
+
+# -- Install VS Code
+# https://code.visualstudio.com/docs/setup/linux
+
 # -- Install Youtube-DL
 # https://youtube-dl.org/
+
+# -- Install Zoom
+# https://zoom.us/download
 
 # -- Install Pip after conda
 # pip install black
