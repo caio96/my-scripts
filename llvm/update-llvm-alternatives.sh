@@ -4,7 +4,7 @@ version="12"
 priority="10"
 
 sudo update-alternatives \
-    --install /usr/bin/llvm                   llvm                   /usr/lib/llvm-${version} ${priority} \
+    --install /usr/lib/llvm                   llvm                   /usr/lib/llvm-${version} ${priority} \
     --slave   /usr/bin/lli                    lli                    /usr/bin/lli-${version} \
     --slave   /usr/bin/bugpoint               bugpoint               /usr/bin/bugpoint-${version} \
     --slave   /usr/bin/dsymutil               dsymutil               /usr/bin/dsymutil-${version} \

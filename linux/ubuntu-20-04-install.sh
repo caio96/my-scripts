@@ -7,11 +7,9 @@ sudo apt install -y baobab
 sudo apt install -y build-essential
 sudo apt install -y calibre
 sudo apt install -y chesse
-sudo apt install -y clang clang-11
-sudo apt install -y clang-tools clang-tools-11
-sudo apt install -y clangd clangd-11
-sudo apt install -y clang-format clang-format-11
-sudo apt install -y clang-tidy clang-tidy-11
+sudo apt install -y clang
+sudo apt install -y "clang*12"
+sudo apt install -y libclang-12-dev
 sudo apt install -y cmake
 sudo apt install -y colordiff
 sudo apt install -y cppcheck
@@ -24,13 +22,18 @@ sudo apt install -y gaupol
 sudo apt install -y gdb
 sudo apt install -y gdebi
 sudo apt install -y gimp
-sudo apt install -y git
+sudo apt install -y git git-lfs
 sudo apt install -y gnome-tweak-tool
+sudo apt install -y google-perftools
 sudo apt install -y gparted
 sudo apt install -y htop
 sudo apt install -y kitty
 sudo apt install -y libreoffice
-sudo apt install -y llvm llvm-11
+sudo apt install -y libtool libtool-bin
+sudo apt install -y linux-tools-common linux-tools-generic
+sudo apt install -y lld-12
+sudo apt install -y llvm
+sudo apt install -y "llvm*12*"
 sudo apt install -y locate
 sudo apt install -y meld
 sudo apt install -y neofetch
@@ -97,9 +100,9 @@ papirus-folders -C yaru --theme Papirus
 
 # -- Install Etcher
 # https://github.com/balena-io/etcher
-curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
-sudo apt update
-sudo apt install balena-etcher-electron
+# curl -1sLf 'https://dl.cloudsmith.io/public/balena/etcher/setup.deb.sh' | sudo -E bash
+# sudo apt update
+# sudo apt install balena-etcher-electron
 
 # -- Install K2pdfopt
 # https://www.willus.com/k2pdfopt/
@@ -131,6 +134,14 @@ sudo apt install balena-etcher-electron
 # -- Install Zoom
 # https://zoom.us/download
 
+# -- Install Go
+# https://go.dev/dl/
+# move extracted dir to /opt/
+# set gopath to .go
+# go env -w GOPATH=$HOME/.go
+# install pprof after go
+# go install github.com/google/pprof@latest
+
 # -- Install Pip after conda
 # pip install black
 # pip install flake8
@@ -147,6 +158,11 @@ sudo apt install balena-etcher-electron
 # pip install pylint
 # pip install python-language-server
 # pip install youtube_dl
+
+# -- Configure Docker
+# https://docs.docker.com/engine/install/linux-postinstall/
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
 
 # -- Configure Prompt:
 
@@ -178,6 +194,9 @@ sudo apt install balena-etcher-electron
 
 # - Install tpm for tmux
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# -- Retain less olders version in snap
+sudo snap set system refresh.retain=2
 
 # -- Enable click to minimize in Ubuntu
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
