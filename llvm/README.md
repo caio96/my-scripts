@@ -26,3 +26,9 @@ done
 ```
 
 Now use files listed in files-12 to create the scripts.
+
+
+## LLVM vsCode config
+
+Put the file inside `vscode` in the `.vscode` of your LLVM project repo to fix includes and completion.
+Just update the path to compile_commands.json to the one inside the build dir of llvm-project.
