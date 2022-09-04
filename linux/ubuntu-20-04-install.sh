@@ -27,7 +27,6 @@ sudo apt install -y gnome-tweak-tool
 sudo apt install -y google-perftools
 sudo apt install -y gparted
 sudo apt install -y htop
-sudo apt install -y kitty
 sudo apt install -y libreoffice
 sudo apt install -y libtool libtool-bin
 sudo apt install -y linux-tools-common linux-tools-generic
@@ -38,19 +37,16 @@ sudo apt install -y locate
 sudo apt install -y meld
 sudo apt install -y neofetch
 sudo apt install -y ninja-build
-sudo apt install -y okular
 sudo apt install -y openconnect
 sudo apt install -y pdftk
 sudo apt install -y psensor
 sudo apt install -y pulseaudio-equalizer
 sudo apt install -y python3 python3-pip python3-dev python3-neovim
 sudo apt install -y qbittorrent
-sudo apt install -y ranger
 sudo apt install -y rsync
 sudo apt install -y simple-scan
 sudo apt install -y steam
 sudo apt install -y texlive texlive-full
-sudo apt install -y texstudio
 sudo apt install -y tig
 sudo apt install -y tilix
 sudo apt install -y tlp tlp-rdw
@@ -58,15 +54,12 @@ sudo apt install -y tmux
 sudo apt install -y tree
 sudo apt install -y ubuntu-restricted-extras
 sudo apt install -y uncrustify
-sudo apt install -y valgrind
 sudo apt install -y vim vim-gtk
 sudo apt install -y vlc
 sudo apt install -y xclip
-sudo apt install -y xfce4-terminal
 sudo apt install -y zsh
 
 # -- Snaps
-sudo snap install alacritty --classic
 sudo snap install intellij-idea-community --classic
 sudo snap install node --classic --channel=14
 sudo snap install slack --classic
@@ -110,6 +103,9 @@ papirus-folders -C yaru --theme Papirus
 # -- Install Mendeley
 # https://www.mendeley.com/download-desktop-new/linux
 
+# -- Install Bat
+# https://github.com/sharkdp/bat/releases
+
 # -- Install Nerdfonts (Fira Code)
 # Get fonts: https://www.nerdfonts.com/font-downloads
 # Place fonts in ~/.fonts/
@@ -147,8 +143,6 @@ papirus-folders -C yaru --theme Papirus
 # pip install flake8
 # pip install ipython
 # pip install isort
-# pip install jedi
-# pip install jedi-language-server
 # pip install jupyter
 # pip install jupyterthemes
 # pip install matplotlib
@@ -186,6 +180,10 @@ papirus-folders -C yaru --theme Papirus
 # - Install bash-it
 # git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 # ~/.bash_it/install.sh
+
+# - Install starship for bash
+# curl https://starship.rs/install.sh -o install.sh
+# sh install.sh -b $HOME/.local/bin
 
 # - Install vim-plug for vim and neovim
 # https://github.com/junegunn/vim-plug
