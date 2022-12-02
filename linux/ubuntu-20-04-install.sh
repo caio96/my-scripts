@@ -193,6 +193,12 @@ papirus-folders -C yaru --theme Papirus
 # - Install tpm for tmux
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Setup ssh keys
+# chmod 700 ~/.ssh
+# chmod 600 ~/.ssh/id_rsa
+# chmod 644 ~/.ssh/id_rsa.pub
+# chmod 644 ~/.ssh/config
+
 # -- Retain less olders version in snap
 sudo snap set system refresh.retain=2
 
