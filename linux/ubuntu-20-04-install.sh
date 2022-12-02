@@ -118,9 +118,6 @@ papirus-folders -C yaru --theme Papirus
 # conda update conda
 # conda update --all
 
-# -- Install Rescue Time
-# https://www.rescuetime.com/download_linux
-
 # -- Install VS Code
 # https://code.visualstudio.com/docs/setup/linux
 
@@ -193,11 +190,15 @@ papirus-folders -C yaru --theme Papirus
 # - Install tpm for tmux
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Setup ssh keys
+# -- Setup ssh keys
 # chmod 700 ~/.ssh
 # chmod 600 ~/.ssh/id_rsa
 # chmod 644 ~/.ssh/id_rsa.pub
 # chmod 644 ~/.ssh/config
+
+# -- Setup Tilix
+# Set theme to Gruvbox Dark https://github.com/MichaelThessel/tilix-gruvbox.git
+# Set font to FiraCode Nerd Font Regular 11.5
 
 # -- Retain less olders version in snap
 sudo snap set system refresh.retain=2
