@@ -169,6 +169,9 @@ gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 # -- Stop showing mounted drives on dock
 gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 
+# -- Cycle windows on scroll on dock
+gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
+
 # -- Start tlp
 sudo tlp start
 
