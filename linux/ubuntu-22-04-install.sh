@@ -13,7 +13,6 @@ sudo apt install -y cmake
 sudo apt install -y curl
 sudo apt install -y docker docker-compose
 sudo apt install -y ffmpeg
-sudo apt install -y flameshot
 sudo apt install -y gaupol
 sudo apt install -y gdb
 sudo apt install -y gimp
@@ -53,6 +52,7 @@ sudo snap install slack --classic
 sudo snap install nvim --classic
 sudo snap install code --classic
 sudo snap install spotify
+sudo snap install pomotroid
 
 # -- Set NVIDIA driver to lastest proprietary version on Software & Updates
 
@@ -68,6 +68,15 @@ papirus-folders -C yaru --theme Papirus
 # https://www.google.com/chrome/
 # Disable handling of multimedia keys
 # go to chrome://flags/ and disable Hardware Media Key Handling
+
+# -- Install Zotero
+# https://www.zotero.org/download/
+# https://www.zotero.org/support/installation
+# sudo mv zotero-extracted /opt/zotero
+# cd /opt/zotero/; ./set_launcher_icon
+# ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop.
+# Install zotero night plugin
+# https://github.com/tefkah/zotero-night
 
 # -- Install Mendeley
 # sudo apt install libfuse2
@@ -151,10 +160,18 @@ papirus-folders -C yaru --theme Papirus
 # chmod 644 ~/.ssh/id_rsa.pub
 # chmod 644 ~/.ssh/config
 
+# -- Setup Gnome terminal
+# Add Gruvbox theme
+# git clone https://github.com/Gogh-Co/Gogh.git
+# export TERMINAL="gnome-terminal"
+# cd themes
+# ./gruvbox-dark.sh
+# Set font to FiraCode Nerd Mono 11
+
 # -- Setup Tilix
 
 # Set font to FiraCode Nerd Font Regular 11.5
-# Set theme to Gruvbox Dark Hard 
+# Set theme to Gruvbox Dark Hard
 # git clone https://github.com/MichaelThessel/tilix-gruvbox.git
 # cd tilix-gruvbox
 # mkdir -p ~/.config/tilix/schemes
