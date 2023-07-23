@@ -194,6 +194,8 @@ papirus-folders -C yaru --theme Papirus
 
 # -- Install Wezterm
 
+# -- Remap caps lock to ctrl, and both shifts to caps lock in gnome tweaks
+
 # -- Retain less olders version in snap
 sudo snap set system refresh.retain=2
 
