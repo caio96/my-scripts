@@ -10,8 +10,10 @@ sudo apt install -y cheese
 sudo apt install -y "clang*14"
 sudo apt install -y libclang-14-dev
 sudo apt install -y cmake
+sudo apt install -y chrome-gnome-shell
 sudo apt install -y curl
 sudo apt install -y docker docker-compose
+sudo apt install -y fd-find
 sudo apt install -y ffmpeg
 sudo apt install -y gaupol
 sudo apt install -y gdb
@@ -29,8 +31,11 @@ sudo apt install -y locate
 sudo apt install -y meld
 sudo apt install -y neofetch
 sudo apt install -y ninja-build
+sudo apt install -y pdfgrep
 sudo apt install -y pdftk
+sudo apt install -y powertop
 sudo apt install -y python3 python3-pip python3-dev python3-neovim
+sudo apt install -y ripgrep
 sudo apt install -y rsync
 sudo apt install -y simple-scan
 sudo apt install -y steam
@@ -45,16 +50,22 @@ sudo apt install -y vim vim-gtk
 sudo apt install -y vlc
 sudo apt install -y xclip
 sudo apt install -y zsh
+sudo apt install -y zoxide
 
 # -- Snaps
 sudo snap install node --classic
 sudo snap install slack --classic
-sudo snap install nvim --classic
 sudo snap install code --classic
 sudo snap install spotify
 sudo snap install pomotroid
 
 # -- Set NVIDIA driver to lastest proprietary version on Software & Updates
+
+# -- Download lastest neovim from their releases: put appimage in .local/bin 
+# https://github.com/neovim/neovim/releases
+
+# -- Download Gitui
+# https://github.com/extrawurst/gitui
 
 # -- Install Papirus Icon Theme
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
@@ -69,6 +80,9 @@ papirus-folders -C yaru --theme Papirus
 # Disable handling of multimedia keys
 # go to chrome://flags/ and disable Hardware Media Key Handling
 
+# -- Install fix for jumpy scrolling
+# https://extensions.gnome.org/extension/5282/alttab-scroll-workaround/
+
 # -- Install Zotero
 # https://www.zotero.org/download/
 # https://www.zotero.org/support/installation
@@ -77,10 +91,6 @@ papirus-folders -C yaru --theme Papirus
 # ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop.
 # Install zotero night plugin
 # https://github.com/tefkah/zotero-night
-
-# -- Install Mendeley
-# sudo apt install libfuse2
-# https://www.mendeley.com/download-reference-manager/linux
 
 # -- Install Bat
 # https://github.com/sharkdp/bat/releases
@@ -150,6 +160,8 @@ papirus-folders -C yaru --theme Papirus
 # https://github.com/junegunn/vim-plug
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Create undo and swap directories
+# mkdir .vim/swap .vim/undo
 
 # - Install tpm for tmux
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -176,6 +188,11 @@ papirus-folders -C yaru --theme Papirus
 # cd tilix-gruvbox
 # mkdir -p ~/.config/tilix/schemes
 # cp gruvbox-* ~/.config/tilix.schemes/
+# Or get themes from gogh https://github.com/Gogh-Co/Gogh
+
+# -- Install Discord
+
+# -- Install Wezterm
 
 # -- Retain less olders version in snap
 sudo snap set system refresh.retain=2
@@ -191,6 +208,9 @@ gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windo
 
 # -- Start tlp
 sudo tlp start
+
+# -- Autotune powertop
+sudo powertop --autotune
 
 # -- Clean up
 sudo apt -y autoremove && sudo apt -y clean
@@ -224,4 +244,7 @@ sudo apt -y autoremove && sudo apt -y clean
 # -- Install Youtube-DL
 # https://youtube-dl.org/
 # pip install youtube_dl
+
+# --  Install Darktable
+# https://www.darktable.org/
 
