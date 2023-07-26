@@ -1,40 +1,44 @@
 #!/bin/bash
-# Installs a lot of stuff
+# Setup ubuntu 22.04
+
+# =========================== Update =========================== #
 
 sudo apt update && sudo apt -y upgrade
 
+# =========================== Install software =========================== #
+
+# Install apt packages
 sudo apt install -y baobab
+sudo apt install -y bat
 sudo apt install -y build-essential
 sudo apt install -y calibre
 sudo apt install -y cheese
-sudo apt install -y "clang*14"
-sudo apt install -y libclang-14-dev
+sudo apt install -y "clang*15"
+sudo apt install -y libclang-15-dev
 sudo apt install -y cmake
 sudo apt install -y chrome-gnome-shell
 sudo apt install -y curl
 sudo apt install -y docker docker-compose
 sudo apt install -y fd-find
-sudo apt install -y ffmpeg
-sudo apt install -y gaupol
 sudo apt install -y gdb
 sudo apt install -y gimp
 sudo apt install -y git git-lfs
 sudo apt install -y gnome-tweaks
 sudo apt install -y gparted
 sudo apt install -y htop
+sudo apt install -y libfuse2
 sudo apt install -y libreoffice
 sudo apt install -y libtool libtool-bin
 sudo apt install -y linux-tools-common linux-tools-generic
-sudo apt install -y lld-14
-sudo apt install -y "llvm*14*"
+sudo apt install -y lld-15
+sudo apt install -y "llvm*15*"
 sudo apt install -y locate
-sudo apt install -y meld
 sudo apt install -y neofetch
 sudo apt install -y ninja-build
 sudo apt install -y pdfgrep
 sudo apt install -y pdftk
 sudo apt install -y powertop
-sudo apt install -y python3 python3-pip python3-dev python3-neovim
+sudo apt install -y python3
 sudo apt install -y ripgrep
 sudo apt install -y rsync
 sudo apt install -y simple-scan
@@ -42,7 +46,7 @@ sudo apt install -y steam
 sudo apt install -y texlive texlive-full
 sudo apt install -y tig
 sudo apt install -y tilix
-sudo apt install -y tlp tlp-rdw
+sudo apt install -y tlp
 sudo apt install -y tmux
 sudo apt install -y tree
 sudo apt install -y ubuntu-restricted-extras
@@ -53,19 +57,18 @@ sudo apt install -y zsh
 sudo apt install -y zoxide
 
 # -- Snaps
-sudo snap install node --classic
-sudo snap install slack --classic
 sudo snap install code --classic
-sudo snap install spotify
+sudo snap install discord
+sudo snap install node --classic
 sudo snap install pomotroid
+sudo snap install slack
+sudo snap install spotify
 
-# -- Set NVIDIA driver to lastest proprietary version on Software & Updates
-
-# -- Download lastest neovim from their releases: put appimage in .local/bin 
-# https://github.com/neovim/neovim/releases
-
-# -- Download Gitui
-# https://github.com/extrawurst/gitui
+# -- Install Chrome
+# get .db from https://www.google.com/chrome/
+# sudo apt install ./file.deb
+# Disable handling of multimedia keys
+# go to chrome://flags/ and disable Hardware Media Key Handling
 
 # -- Install Papirus Icon Theme
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
@@ -73,151 +76,197 @@ sudo add-apt-repository ppa:papirus/papirus
 sudo apt update
 sudo apt install papirus-icon-theme papirus-folders
 # change color of folder icons to yaru
-papirus-folders -C yaru --theme Papirus
+papirus-folders -C nordic --theme Papirus-Dark
+# change theme in gnome-tweaks
 
-# -- Install Chrome
-# https://www.google.com/chrome/
-# Disable handling of multimedia keys
-# go to chrome://flags/ and disable Hardware Media Key Handling
+# -- Install neovim
+# get lastest neovim from https://github.com/neovim/neovim/releases
+# put appimage in ~/.local/bin
 
-# -- Install fix for jumpy scrolling
-# https://extensions.gnome.org/extension/5282/alttab-scroll-workaround/
+# -- Install Wezterm
+# get .deb from https://wezfurlong.org/wezterm/installation.html
+# sudo apt install ./file.deb
 
 # -- Install Zotero
-# https://www.zotero.org/download/
-# https://www.zotero.org/support/installation
+# get .tar.gz from https://www.zotero.org/download/
+# extract it
 # sudo mv zotero-extracted /opt/zotero
-# cd /opt/zotero/; ./set_launcher_icon
-# ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop.
-# Install zotero night plugin
-# https://github.com/tefkah/zotero-night
+cd /opt/zotero/
+./set_launcher_icon
+ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
+# -- Install zotero night plugin
+# get .xpi file from https://github.com/tefkah/zotero-night/releases
+# in Zotero add it as an add-on
 
-# -- Install Bat
-# https://github.com/sharkdp/bat/releases
+# -- Install Zoom
+# https://zoom.us/download
+# sudo apt install ./file.deb
 
 # -- Install Nerdfonts (Fira Code)
 # Get fonts: https://www.nerdfonts.com/font-downloads
 # Place fonts in ~/.fonts/
 # Run:
-# fc-cache -fv
+fc-cache -fv
 
 # -- Install Miniconda
 # https://docs.conda.io/en/latest/miniconda.html
+# bash install-script.sh -p $HOME/.anaconda3
 # Update conda
-# conda update conda
-# conda update --all
+conda update conda
+conda update --all
 
-# -- Install Zoom
-# https://zoom.us/download
+# -- Install with pip
+pip install ipython
+pip install matplotlib
+pip install neovim
+pip install numpy
+pip install pandas
 
-# -- Install Pip after conda
-# pip install black
-# pip install flake8
-# pip install ipython
-# pip install isort
-# pip install jupyter
-# pip install jupyterthemes
-# pip install matplotlib
-# pip install neovim
-# pip install numpy
-# pip install pandas
-# pip install pylint
-# pip install python-language-server
+# -- Install Gitui
+# Download musl.tar.gz file from https://github.com/extrawurst/gitui/releases
+# Extract it
+# Put it in ~/.local/bin
+
+# -- Install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# =========================== Configurations =========================== #
 
 # -- Configure Docker
 # https://docs.docker.com/engine/install/linux-postinstall/
-# sudo groupadd docker
-# sudo usermod -aG docker $USER
-
-# -- Install fzf
-# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# ~/.fzf/install
-
-# -- Configure Prompt:
-
-# - Install starship for bash
-# curl https://starship.rs/install.sh -o install.sh
-# sh install.sh -b $HOME/.local/bin
-
-# - Install oh-my-zsh
-# https://ohmyz.sh/#install
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# - Add spaceship theme to oh-my-zsh
-# git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-# set ZSH_THEME="spaceship" in .zshrc
-
-# - Add zsh-syntax-highlight plugin to oh-my-zsh
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# plugins=([plugins...] zsh-syntax-highlighting) in .zshrc
-
-# - Add zsh-autosuggestions plugin to oh-my-zsh
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# plugins=([plugins...] zsh-autosuggestions) in .zshrc
-
-# - Install vim-plug for vim and neovim
-# https://github.com/junegunn/vim-plug
-# curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-# Create undo and swap directories
-# mkdir .vim/swap .vim/undo
-
-# - Install tpm for tmux
-# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+sudo groupadd docker
+sudo usermod -aG docker "$USER"
 
 # -- Setup ssh keys
-# chmod 700 ~/.ssh
-# chmod 600 ~/.ssh/id_rsa
-# chmod 644 ~/.ssh/id_rsa.pub
-# chmod 644 ~/.ssh/config
+# Copy ssh folder if there is a backup
+# Make permissions correct
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
+chmod 644 ~/.ssh/config
 
 # -- Setup Gnome terminal
 # Add Gruvbox theme
-# git clone https://github.com/Gogh-Co/Gogh.git
-# export TERMINAL="gnome-terminal"
-# cd themes
-# ./gruvbox-dark.sh
+# Set theme to Gruvbox Dark with gogh:
+# https://github.com/Gogh-Co/Gogh
+bash -c "$(wget -qO- https://git.io/vQgMr)"
 # Set font to FiraCode Nerd Mono 11
 
 # -- Setup Tilix
+# Set theme to Gruvbox Dark with gogh:
+# https://github.com/Gogh-Co/Gogh
+bash -c "$(wget -qO- https://git.io/vQgMr)"
+# Set font to FiraCode Nerd Font Regular 11
 
-# Set font to FiraCode Nerd Font Regular 11.5
-# Set theme to Gruvbox Dark Hard
-# git clone https://github.com/MichaelThessel/tilix-gruvbox.git
-# cd tilix-gruvbox
-# mkdir -p ~/.config/tilix/schemes
-# cp gruvbox-* ~/.config/tilix.schemes/
-# Or get themes from gogh https://github.com/Gogh-Co/Gogh
-
-# -- Install Discord
-
-# -- Install Wezterm
-
-# -- Remap caps lock to ctrl, and both shifts to caps lock in gnome tweaks
-
-# -- Retain less olders version in snap
-sudo snap set system refresh.retain=2
-
-# -- Enable click to minimize in Ubuntu
+# -- Enable click to minimize
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-
-# -- Stop showing mounted drives on dock
-gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
-
 # -- Cycle windows on scroll on dock
 gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
 
-# -- Start tlp
+# -- Remap caps lock to ctrl, and both shifts to caps lock in gnome tweaks
+
+# -- Enable tlp
 sudo tlp start
+sudo systemctl enable tlp.service
 
-# -- Autotune powertop
-sudo powertop --autotune
+# Make Dash nice
+# Enable dash to dock with gnome shell extension on firefox
+# Disable ubuntu-dock
+sudo mv /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com.bak
+# Enable user shell themes in the gnome shell extension
 
-# -- Clean up
+# Install pop gtk theme
+sudo apt install sassc meson libglib2.0-dev
+git clone https://github.com/pop-os/gtk-theme.git
+cd gtk-theme
+meson build && cd build
+ninja
+ninja install
+# Set shell theme to Pop and application theme to PopDark in gnome tweaks
+
+# =========================== Setup teminal enviroment =========================== #
+
+# - Install starship for bash
+# https://starship.rs/
+curl https://starship.rs/install.sh -o /tmp/install.sh
+sh /tmp/install.sh -b "$HOME"/.local/bin
+
+# - Install oh-my-zsh
+# https://ohmyz.sh/#install
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# - Add spaceship theme to oh-my-zsh
+# https://spaceship-prompt.sh/
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# set ZSH_THEME="spaceship" in .zshrc
+
+# - Add zsh-syntax-highlight plugin to oh-my-zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
+# plugins=([plugins...] zsh-syntax-highlighting) in .zshrc
+
+# - Add zsh-autosuggestions plugin to oh-my-zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
+# plugins=([plugins...] zsh-autosuggestions) in .zshrc
+
+# -- Install nvchad for neovim
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+
+# - Install tpm for tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# =========================== Setup dotfiles =========================== #
+
+# Download my dot files
+mkdir -p "$HOME/git"
+DOT_FILES="$HOME/git/dot-files"
+git clone git@github.com:caio96/dot-files.git "$DOT_FILES"
+
+rm -f "$HOME"/.bash_logout
+rm -f "$HOME"/.bashrc
+rm -f "$HOME"/.profile
+rm -f "$HOME"/.zshrc
+
+ln -s "$DOT_FILES"/.aliases "$HOME"/.aliases
+ln -s "$DOT_FILES"/.bash_logout "$HOME"/.bash_logout
+ln -s "$DOT_FILES"/.bashrc "$HOME"/.bashrc
+ln -s "$DOT_FILES"/.condarc "$HOME"/.condarc
+ln -s "$DOT_FILES"/.gitconfig "$HOME"/.gitconfig
+ln -s "$DOT_FILES"/.hidden "$HOME"/.hidden
+ln -s "$DOT_FILES"/.profile "$HOME"/.profile
+ln -s "$DOT_FILES"/.tigrc "$HOME"/.tigrc
+ln -s "$DOT_FILES"/.tmux.conf "$HOME"/.tmux.conf
+ln -s "$DOT_FILES"/.vimrc "$HOME"/.vimrc
+ln -s "$DOT_FILES"/.wezterm.lua "$HOME"/.wezterm.lua
+ln -s "$DOT_FILES"/.zshrc "$HOME"/.zshrc
+
+ln -s "$DOT_FILES"/.config/spaceship.zsh "$HOME"/.config/spaceship.zsh
+ln -s "$DOT_FILES"/.config/starship.toml "$HOME"/.config/starship.toml
+mkdir -p "$HOME"/.config/Code/User
+ln -s "$DOT_FILES"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json
+
+rm -rf "$HOME"/.config/nvim/lua/custom
+ln -s "$DOT_FILES"/.config/nvim/lua/custom "$HOME"/.config/nvim/lua/custom
+
+ln -s "$DOT_FILES"/.oh-my-zsh/custom/syntax-highlight.zsh "$ZSH_CUSTOM"/syntax-highlight.zsh
+
+tmux start-server
+tmux new-session -d
+"$HOME"/.tmux/plugins/tpm/scripts/install_plugins.sh
+tmux kill-server
+ln -s "$DOT_FILES"/.tmux/plugins/tmux/catppuccin-gruvbox.tmuxtheme "$HOME"/.tmux/plugins/tmux/catppuccin-gruvbox.tmuxtheme
+
+# =========================== Bug fixes =========================== #
+
+# -- Fix for jumpy scrolling
+# https://extensions.gnome.org/extension/5282/alttab-scroll-workaround/
+
+# =========================== Clean up =========================== #
+
 sudo apt -y autoremove && sudo apt -y clean
 
-# -- Other software
+# =========================== Optional software =========================== #
 
 # -- Install Open Broadcaster Software Studio
 # https://obsproject.com/wiki/install-instructions#linux
