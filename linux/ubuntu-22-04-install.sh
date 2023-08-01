@@ -19,6 +19,7 @@ sudo apt install -y cmake
 sudo apt install -y chrome-gnome-shell
 sudo apt install -y curl
 sudo apt install -y docker docker-compose
+sudo apt install -y exa
 sudo apt install -y fd-find
 sudo apt install -y gdb
 sudo apt install -y gimp
@@ -39,6 +40,7 @@ sudo apt install -y pdfgrep
 sudo apt install -y pdftk
 sudo apt install -y powertop
 sudo apt install -y python3
+sudo apt install -y ranger
 sudo apt install -y ripgrep
 sudo apt install -y rsync
 sudo apt install -y simple-scan
@@ -87,6 +89,23 @@ papirus-folders -C nordic --theme Papirus-Dark
 # get .deb from https://wezfurlong.org/wezterm/installation.html
 # sudo apt install ./file.deb
 
+# -- Install gdb-dashboard
+# https://github.com/cyrus-and/gdb-dashboard
+wget -P ~ https://git.io/.gdbinit
+
+# -- Install Ultimate Plumber
+# https://github.com/akavel/up
+wget https://github.com/akavel/up/releases/latest/download/up -o ~/.local/bin/up
+chmod +x ~/.locat/bin/up
+
+# -- Install Navi
+# https://github.com/denisidoro/navi
+bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+
+# -- Install nnn
+# https://github.com/jarun/nnn/releases
+# get latest static release and move it to ~/.local/bin
+
 # -- Install Zotero
 # get .tar.gz from https://www.zotero.org/download/
 # extract it
@@ -121,6 +140,9 @@ pip install matplotlib
 pip install neovim
 pip install numpy
 pip install pandas
+pip install pygments # gdb-dashboard dependency
+pip install thefuck
+pip install tldr
 
 # -- Install Gitui
 # Download musl.tar.gz file from https://github.com/extrawurst/gitui/releases
