@@ -10,6 +10,7 @@ sudo apt update && sudo apt -y upgrade
 # Install apt packages
 sudo apt install -y baobab
 sudo apt install -y bat
+sudo apt install -y bison
 sudo apt install -y build-essential
 sudo apt install -y calibre
 sudo apt install -y cheese
@@ -24,11 +25,14 @@ sudo apt install -y fd-find
 sudo apt install -y gdb
 sudo apt install -y gimp
 sudo apt install -y git git-lfs
+sudo apt install -y git-extras
 sudo apt install -y gnome-tweaks
 sudo apt install -y gparted
 sudo apt install -y htop
 sudo apt install -y libfuse2
+sudo apt install -y libgmp-dev
 sudo apt install -y libreoffice
+sudo apt install -y libstdc++-12-dev
 sudo apt install -y libtool libtool-bin
 sudo apt install -y linux-tools-common linux-tools-generic
 sudo apt install -y lld-15
@@ -106,6 +110,9 @@ bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts
 # https://github.com/jarun/nnn/releases
 # get latest static release and move it to ~/.local/bin
 
+# -- Install broot
+# https://dystroy.org/broot/
+
 # -- Install Zotero
 # get .tar.gz from https://www.zotero.org/download/
 # extract it
@@ -143,15 +150,26 @@ pip install pandas
 pip install pygments # gdb-dashboard dependency
 pip install thefuck
 pip install tldr
+pip install howdoi
 
 # -- Install Gitui
 # Download musl.tar.gz file from https://github.com/extrawurst/gitui/releases
 # Extract it
 # Put it in ~/.local/bin
 
+# -- Install LazyGit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+rm lazygit.tar.gz
+mv lazygit ~/.local/bin/
+
 # -- Install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# -- Install with node
+sudo npm install --global fkill-cli
 
 # =========================== Configurations =========================== #
 
@@ -283,6 +301,23 @@ ln -s "$DOT_FILES"/.tmux/plugins/tmux/catppuccin-gruvbox.tmuxtheme "$HOME"/.tmux
 
 # -- Fix for jumpy scrolling
 # https://extensions.gnome.org/extension/5282/alttab-scroll-workaround/
+
+# -- Fix nvidia sleep/wakeup on black screeen
+# Install nvidia drivers
+sudo ubuntu-drivers list # shows available drivers
+sudo ubuntu-drivers install nvidia:525
+# add to /etc/default/grub
+# GRUB_CMDLINE_LINUX_DEFAULT="nouveau.blacklist=1 acpi_osi=Linux nouveau.modeset=0"
+# run
+sudo update-grub
+# disable nvidia suspension services
+sudo systemctl disable nvidia-suspend
+sudo systemctl disable nvidia-hibernate
+sudo systemctl disable nvidia-resume
+# add "exit" to the beginning of the script /usr/bin/nvidia-sleep.sh
+
+# -- Stop messing with the time in Windows (in dual boot)
+timedatectl set-local-rtc 1
 
 # =========================== Clean up =========================== #
 

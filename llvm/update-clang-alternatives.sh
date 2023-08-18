@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="14"
+version="15"
 priority="10"
 
 sudo update-alternatives \
