@@ -1,11 +1,11 @@
 #!/bin/bash
 # Setup ubuntu 22.04
 
-# =========================== Update =========================== #
+## Update ====================================================== #
 
 sudo apt update && sudo apt -y upgrade
 
-# =========================== Install software =========================== #
+## Install stuff =============================================== #
 
 # Install apt packages
 sudo apt install -y baobab
@@ -63,15 +63,18 @@ sudo apt install -y zsh
 sudo apt install -y zoxide
 
 # -- Snaps
+sudo snap install bash-language-server --classic
 sudo snap install code --classic
 sudo snap install discord
+sudo snap install go --classic
 sudo snap install node --classic
 sudo snap install pomotroid
+sudo snap install --channel=edge shellcheck
 sudo snap install slack
 sudo snap install spotify
 
 # -- Install Chrome
-# get .db from https://www.google.com/chrome/
+# get .deb from https://www.google.com/chrome/
 # sudo apt install ./file.deb
 # Disable handling of multimedia keys
 # go to chrome://flags/ and disable Hardware Media Key Handling
@@ -86,32 +89,12 @@ papirus-folders -C nordic --theme Papirus-Dark
 # change theme in gnome-tweaks
 
 # -- Install neovim
-# get lastest neovim from https://github.com/neovim/neovim/releases
+# get lastest neovim appimage from https://github.com/neovim/neovim/releases
 # put appimage in ~/.local/bin
 
 # -- Install Wezterm
 # get .deb from https://wezfurlong.org/wezterm/installation.html
 # sudo apt install ./file.deb
-
-# -- Install gdb-dashboard
-# https://github.com/cyrus-and/gdb-dashboard
-wget -P ~ https://git.io/.gdbinit
-
-# -- Install Ultimate Plumber
-# https://github.com/akavel/up
-wget https://github.com/akavel/up/releases/latest/download/up -o ~/.local/bin/up
-chmod +x ~/.locat/bin/up
-
-# -- Install Navi
-# https://github.com/denisidoro/navi
-bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
-
-# -- Install nnn
-# https://github.com/jarun/nnn/releases
-# get latest static release and move it to ~/.local/bin
-
-# -- Install broot
-# https://dystroy.org/broot/
 
 # -- Install Zotero
 # get .tar.gz from https://www.zotero.org/download/
@@ -134,44 +117,7 @@ ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
 # Run:
 fc-cache -fv
 
-# -- Install Miniconda
-# https://docs.conda.io/en/latest/miniconda.html
-# bash install-script.sh -p $HOME/.anaconda3
-# Update conda
-conda update conda
-conda update --all
-
-# -- Install with pip
-pip install ipython
-pip install matplotlib
-pip install neovim
-pip install numpy
-pip install pandas
-pip install pygments # gdb-dashboard dependency
-pip install thefuck
-pip install tldr
-pip install howdoi
-
-# -- Install Gitui
-# Download musl.tar.gz file from https://github.com/extrawurst/gitui/releases
-# Extract it
-# Put it in ~/.local/bin
-
-# -- Install LazyGit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-rm lazygit.tar.gz
-mv lazygit ~/.local/bin/
-
-# -- Install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
-# -- Install with node
-sudo npm install --global fkill-cli
-
-# =========================== Configurations =========================== #
+## Configure =================================================== #
 
 # -- Configure Docker
 # https://docs.docker.com/engine/install/linux-postinstall/
@@ -190,8 +136,9 @@ chmod 644 ~/.ssh/config
 # Add Gruvbox theme
 # Set theme to Gruvbox Dark with gogh:
 # https://github.com/Gogh-Co/Gogh
+export TERMINAL="gnome-terminal"
 bash -c "$(wget -qO- https://git.io/vQgMr)"
-# Set font to FiraCode Nerd Mono 11
+# Set font to FiraCode Nerd Font 11
 
 # -- Setup Tilix
 # Set theme to Gruvbox Dark with gogh:
@@ -205,18 +152,19 @@ gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
 
 # -- Remap caps lock to ctrl, and both shifts to caps lock in gnome tweaks
+# Go to gnome-tweaks -> Keyboard & Mouse -> Additional layout options
 
 # -- Enable tlp
 sudo tlp start
 sudo systemctl enable tlp.service
 
-# Make Dash nice
-# Enable dash to dock with gnome shell extension on firefox
+# -- Make Dash nice
+# Enable dash to dock with gnome shell extensions
 # Disable ubuntu-dock
 sudo mv /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com.bak
 # Enable user shell themes in the gnome shell extension
 
-# Install pop gtk theme
+# -- Install pop gtk theme
 sudo apt install sassc meson libglib2.0-dev
 git clone https://github.com/pop-os/gtk-theme.git
 cd gtk-theme
@@ -225,7 +173,7 @@ ninja
 ninja install
 # Set shell theme to Pop and application theme to PopDark in gnome tweaks
 
-# =========================== Setup teminal enviroment =========================== #
+# Setup teminal ================================================ #
 
 # - Install starship for bash
 # https://starship.rs/
@@ -250,23 +198,20 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 # plugins=([plugins...] zsh-autosuggestions) in .zshrc
 
-# -- Install nvchad for neovim
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-
 # - Install tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# =========================== Setup dotfiles =========================== #
+# Setup dotfiles =============================================== #
 
 # Download my dot files
 mkdir -p "$HOME/git"
 DOT_FILES="$HOME/git/dot-files"
 git clone git@github.com:caio96/dot-files.git "$DOT_FILES"
 
-rm -f "$HOME"/.bash_logout
-rm -f "$HOME"/.bashrc
-rm -f "$HOME"/.profile
-rm -f "$HOME"/.zshrc
+mv "$HOME"/.bash_logout "$HOME"/.bash_logout.bak
+mv "$HOME"/.bashrc "$HOME"/.bashrc.bak 
+mv "$HOME"/.profile "$HOME"/.profile.bak
+mv "$HOME"/.zshrc "$HOME"/.zshrc.bak
 
 ln -s "$DOT_FILES"/.aliases "$HOME"/.aliases
 ln -s "$DOT_FILES"/.bash_logout "$HOME"/.bash_logout
@@ -286,8 +231,7 @@ ln -s "$DOT_FILES"/.config/starship.toml "$HOME"/.config/starship.toml
 mkdir -p "$HOME"/.config/Code/User
 ln -s "$DOT_FILES"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json
 
-rm -rf "$HOME"/.config/nvim/lua/custom
-ln -s "$DOT_FILES"/.config/nvim/lua/custom "$HOME"/.config/nvim/lua/custom
+ln -s ~/git/dot-files/.config/nvim ~/.config/nvim
 
 ln -s "$DOT_FILES"/.oh-my-zsh/custom/syntax-highlight.zsh "$ZSH_CUSTOM"/syntax-highlight.zsh
 
@@ -295,7 +239,62 @@ tmux start-server
 tmux new-session -d
 "$HOME"/.tmux/plugins/tpm/scripts/install_plugins.sh
 tmux kill-server
-ln -s "$DOT_FILES"/.tmux/plugins/tmux/catppuccin-gruvbox.tmuxtheme "$HOME"/.tmux/plugins/tmux/catppuccin-gruvbox.tmuxtheme
+ln -s "$DOT_FILES"/.tmux/plugins/tmux/themes/catppuccin_gruvbox.tmuxtheme "$HOME"/.tmux/plugins/tmux/themes/catppuccin_gruvbox.tmuxtheme
+
+# ============================ Shell Utils ============================= #
+
+# -- Install gdb-dashboard
+# https://github.com/cyrus-and/gdb-dashboard
+wget -P ~ https://git.io/.gdbinit
+
+# -- Install Ultimate Plumber
+# https://github.com/akavel/up
+wget https://github.com/akavel/up/releases/latest/download/up -o ~/.local/bin/up
+chmod +x ~/.locat/bin/up
+
+# -- Install Navi
+# https://github.com/denisidoro/navi
+bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+
+# -- Install nnn
+# https://github.com/jarun/nnn/releases
+# get latest static release and move it to ~/.local/bin
+
+# -- Install neovide
+# get appimage from https://github.com/neovide/neovide/releases
+
+# -- Install broot
+# https://dystroy.org/broot/
+
+# -- Install Miniconda
+# https://docs.conda.io/en/latest/miniconda.html
+# bash install-script.sh -p $HOME/.anaconda3
+# Update conda
+conda update conda
+conda update --all
+
+# -- Install with pip
+pip install ipython
+pip install matplotlib
+pip install neovim
+pip install numpy
+pip install pandas
+pip install pygments # gdb-dashboard dependency
+pip install thefuck
+pip install tldr
+pip install howdoi
+
+# -- Install Gitui
+# Download musl.tar.gz file from https://github.com/extrawurst/gitui/releases
+# Extract it
+# Put it in ~/.local/bin
+
+# -- Install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# -- Install with node
+sudo npm install --global fkill-cli
 
 # =========================== Bug fixes =========================== #
 
