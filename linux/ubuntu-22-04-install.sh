@@ -205,8 +205,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Download my dot files
 mkdir -p "$HOME/git"
+git clone git@github.com:caio96/dot-files.git "$HOME/git/dot-files"
 DOT_FILES="$HOME/git/dot-files"
-git clone git@github.com:caio96/dot-files.git "$DOT_FILES"
 
 mv "$HOME"/.bash_logout "$HOME"/.bash_logout.bak
 mv "$HOME"/.bashrc "$HOME"/.bashrc.bak 
@@ -231,7 +231,7 @@ ln -s "$DOT_FILES"/.config/starship.toml "$HOME"/.config/starship.toml
 mkdir -p "$HOME"/.config/Code/User
 ln -s "$DOT_FILES"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json
 
-ln -s ~/git/dot-files/.config/nvim ~/.config/nvim
+ln -s "$DOT_FILES"/.config/nvim ~/.config/nvim
 
 ln -s "$DOT_FILES"/.oh-my-zsh/custom/syntax-highlight.zsh "$ZSH_CUSTOM"/syntax-highlight.zsh
 
