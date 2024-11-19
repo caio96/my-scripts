@@ -268,7 +268,10 @@ bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts
 
 # -- Install Miniconda
 # https://docs.conda.io/en/latest/miniconda.html
-# bash install-script.sh -p $HOME/.anaconda3
+mkdir -p ~/.anaconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/.anaconda3/miniconda.sh
+bash ~/.anaconda3/miniconda.sh -b -u -p ~/.anaconda3
+rm ~/.anaconda3/miniconda.sh
 # Update conda
 conda update conda
 conda update --all
