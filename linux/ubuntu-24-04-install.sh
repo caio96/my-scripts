@@ -169,6 +169,12 @@ ln -s /opt/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
 # change color of folder
 papirus-folders -C yaru --theme Papirus-Dark
 
+# -- Configure cursor
+# https://www.gnome-look.org/p/1457884
+# add cursor theme to ~/.icons
+# set cursor theme in gnome-tweaks
+# set the same cursor theme in /usr/share/icons/default/index.theme
+
 # -- Configure Chrome
 # go to chrome://flags/ and disable Hardware Media Key Handling
 
