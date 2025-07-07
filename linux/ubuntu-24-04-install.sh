@@ -232,11 +232,12 @@ sudo update-grub
 
 # -- Make Dash nice
 # Install Gnome extensions
-#   -Blur my shell
-#   -Open Bar
-#   -Tiling Shell
-#   -Dash to Dock
-#   -User Themes
+#   - Blur my shell
+#   - Open Bar
+#   - Tiling Shell
+#   - Dash to Dock
+#   - User Themes
+#   - Alphabetical App Grid
 # Enable dash to dock with gnome shell extensions
 # Disable ubuntu-dock
 sudo mv /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com.bak
