@@ -175,6 +175,9 @@ papirus-folders -C yaru --theme Papirus-Dark
 # set cursor theme in gnome-tweaks
 # set the same cursor theme in /usr/share/icons/default/index.theme
 
+# -- Disable Ubuntu pro messages when updating
+# Comment all lines in /var/lib/ubuntu-advantage/apt-esm/etc/apt/sources.list.d/ubuntu-esm-apps.sources
+
 # -- Configure Chrome
 # go to chrome://flags/ and disable Hardware Media Key Handling
 
