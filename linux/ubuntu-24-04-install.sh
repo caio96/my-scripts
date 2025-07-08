@@ -17,7 +17,6 @@ sudo apt install -y atool \
                     clang-19 \
                     cmake \
                     curl \
-                    eza \
                     fd-find \
                     foot \
                     gdb \
@@ -78,6 +77,12 @@ echo \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# -- Install newer eza
+# https://github.com/eza-community/eza/tree/main
+curl -L "https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz" -o ~/Downloads/eza.tar.gz
+atool ~/Downloads/eza.tar.gz --extract-to ~/.local/bin
+chmod +x ~/.local/bin/eza
 
 # -- Install fzf
 # https://github.com/junegunn/fzf.git
@@ -269,6 +274,24 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 # plugins=([plugins...] zsh-autosuggestions) in .zshrc
 
+# - Add zsh-completions plugin
+git clone https://github.com/zsh-users/zsh-completions.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}"/plugins/zsh-completions
+# do not add this one to plugins=()
+
+# - Add zsh-fzf-tab plugin
+git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/fzf-tab
+# plugins=([plugins...] fzf-tab) in .zshrc
+
+# - Add completions to zsh
+git clone https://github.com/eza-community/eza.git ~/Downloads/eza
+git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) # go to latest tag
+cp ~/Downloads/eza/completions/zsh/_eza ~/.oh-my-zsh/custom/completions
+
+# - Install Atuin
+# https://github.com/atuinsh/atuin
+export ATUIN_NO_MODIFY_PATH=1
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/atuinsh/atuin/releases/latest/download/atuin-installer.sh | sh
+
 # - Install tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -303,6 +326,7 @@ if [[ -d "$DOT_FILES" && -n "$DOT_FILES" ]]; then
   ln -s "$DOT_FILES"/.config/nvim ~/.config/nvim
   ln -s "$DOT_FILES"/.config/spaceship.zsh "$HOME"/.config/spaceship.zsh
   ln -s "$DOT_FILES"/.config/starship.toml "$HOME"/.config/starship.toml
+  ln -s "$DOT_FILES"/.config/atuin/config.toml "$HOME"/.config/atuin/config.toml
 
   ln -s "$DOT_FILES"/.oh-my-zsh/custom/syntax-highlight.zsh "$ZSH_CUSTOM"/syntax-highlight.zsh
 
