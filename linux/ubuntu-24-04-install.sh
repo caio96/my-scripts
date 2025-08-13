@@ -105,10 +105,10 @@ rm ~/.anaconda3/miniconda.sh
 ~/.anaconda3/bin/conda update conda
 ~/.anaconda3/bin/conda update --all
 # Install pip packages
-/home/caio/.anaconda3/bin/pip install ipython
-/home/caio/.anaconda3/bin/pip install neovim
-/home/caio/.anaconda3/bin/pip install pygments
-/home/caio/.anaconda3/bin/pip install tldr
+~/.anaconda3/bin/pip install ipython
+~/.anaconda3/bin/pip install neovim
+~/.anaconda3/bin/pip install pygments
+~/.anaconda3/bin/pip install tldr
 
 # -- Install Neovim
 # https://github.com/neovim/neovim/releases/latest
