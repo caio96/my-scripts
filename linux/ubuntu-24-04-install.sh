@@ -290,7 +290,8 @@ cp ~/Downloads/eza/completions/zsh/_eza ~/.oh-my-zsh/custom/completions
 # - Install Atuin
 # https://github.com/atuinsh/atuin
 export ATUIN_NO_MODIFY_PATH=1
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/atuinsh/atuin/releases/latest/download/atuin-installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+ln -s $HOME/.atuin/bin/atuin* $HOME/.local/bin
 
 # - Install tpm for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
